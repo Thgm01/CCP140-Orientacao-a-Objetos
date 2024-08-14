@@ -11,6 +11,9 @@ public:
     Data(int dia, int mes, int ano);
     
     std::array<int, 3> getData();
+    
+    void setData(int dia, int mes, int ano);
+    void setTodayData();
 
 
 private:

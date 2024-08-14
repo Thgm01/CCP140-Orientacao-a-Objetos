@@ -7,7 +7,13 @@ Pessoa::Pessoa(std::string nome, Data dataDeNascimento, char sexo)
     this->sexo = sexo;
 }
 
-std::string Pessoa::getName()
+std::string Pessoa::getNome()
 {
     return this->nome;
+}
+
+
+void Pessoa::setNome(std::string nome)
+{
+    this->nome = nome;
 }

@@ -8,7 +8,7 @@
 #define PESSOA_H
 
 #include <string>
-#include "data.h"
+#include "Data/data.h"
 
 /**
  * @brief Classe que representa uma pessoa (aluno ou funcionário)
@@ -32,13 +32,20 @@ public:
          * 
          * @return std::string - Nome da pessoa
          */
-        std::string getName();
+        std::string getNome();
+
+        /**
+         * @brief Difinir um nome para pessoa
+         * 
+         * @param nome Nome da pessoa
+         */
+        void setNome(std::string nome);
 
 
 private:
         std::string nome;
         Data dataDeNascimento;
-        char sexo;
+        char sexo;        
 };
 
 #endif // PESSOA_H

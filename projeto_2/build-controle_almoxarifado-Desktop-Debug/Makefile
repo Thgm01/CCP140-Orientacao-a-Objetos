@@ -52,11 +52,23 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../controle_almoxarifado/main.cpp \
-		../controle_almoxarifado/mainwindow.cpp moc_mainwindow.cpp
-OBJECTS       = main.o \
+SOURCES       = ../controle_almoxarifado/Colaboradores/aluno.cpp \
+		../controle_almoxarifado/Data/data.cpp \
+		../controle_almoxarifado/Patrimonio/patrimonio.cpp \
+		../controle_almoxarifado/main.cpp \
+		../controle_almoxarifado/Colaboradores/Pessoa/pessoa.cpp \
+		../controle_almoxarifado/mainwindow.cpp \
+		../controle_almoxarifado/paginacadastro.cpp moc_mainwindow.cpp \
+		moc_paginacadastro.cpp
+OBJECTS       = aluno.o \
+		data.o \
+		patrimonio.o \
+		main.o \
+		pessoa.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		paginacadastro.o \
+		moc_mainwindow.o \
+		moc_paginacadastro.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -130,6 +142,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		../controle_almoxarifado/.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -150,8 +163,19 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../controle_almoxarifado/controle_almoxarifado.pro ../controle_almoxarifado/mainwindow.h ../controle_almoxarifado/main.cpp \
-		../controle_almoxarifado/mainwindow.cpp
+		../controle_almoxarifado/controle_almoxarifado.pro ../controle_almoxarifado/Colaboradores/aluno.h \
+		../controle_almoxarifado/Data/data.h \
+		../controle_almoxarifado/Patrimonio/patrimonio.h \
+		../controle_almoxarifado/Colaboradores/Pessoa/pessoa.h \
+		../controle_almoxarifado/Colaboradores/utils.h \
+		../controle_almoxarifado/mainwindow.h \
+		../controle_almoxarifado/paginacadastro.h ../controle_almoxarifado/Colaboradores/aluno.cpp \
+		../controle_almoxarifado/Data/data.cpp \
+		../controle_almoxarifado/Patrimonio/patrimonio.cpp \
+		../controle_almoxarifado/main.cpp \
+		../controle_almoxarifado/Colaboradores/Pessoa/pessoa.cpp \
+		../controle_almoxarifado/mainwindow.cpp \
+		../controle_almoxarifado/paginacadastro.cpp
 QMAKE_TARGET  = controle_almoxarifado
 DESTDIR       = 
 TARGET        = controle_almoxarifado
@@ -160,7 +184,7 @@ TARGET        = controle_almoxarifado
 first: all
 ####### Build rules
 
-controle_almoxarifado: ui_mainwindow.h $(OBJECTS)  
+controle_almoxarifado: ui_mainwindow.h ui_paginacadastro.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../controle_almoxarifado/controle_almoxarifado.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -236,6 +260,7 @@ Makefile: ../controle_almoxarifado/controle_almoxarifado.pro /usr/lib/x86_64-lin
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
@@ -331,6 +356,7 @@ Makefile: ../controle_almoxarifado/controle_almoxarifado.pro /usr/lib/x86_64-lin
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
@@ -367,9 +393,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../controle_almoxarifado/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../controle_almoxarifado/main.cpp ../controle_almoxarifado/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../controle_almoxarifado/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../controle_almoxarifado/Colaboradores/aluno.h ../controle_almoxarifado/Data/data.h ../controle_almoxarifado/Patrimonio/patrimonio.h ../controle_almoxarifado/Colaboradores/Pessoa/pessoa.h ../controle_almoxarifado/Colaboradores/utils.h ../controle_almoxarifado/mainwindow.h ../controle_almoxarifado/paginacadastro.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../controle_almoxarifado/Colaboradores/aluno.cpp ../controle_almoxarifado/Data/data.cpp ../controle_almoxarifado/Patrimonio/patrimonio.cpp ../controle_almoxarifado/main.cpp ../controle_almoxarifado/Colaboradores/Pessoa/pessoa.cpp ../controle_almoxarifado/mainwindow.cpp ../controle_almoxarifado/paginacadastro.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../controle_almoxarifado/mainwindow.ui ../controle_almoxarifado/paginacadastro.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -401,24 +427,34 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_paginacadastro.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_paginacadastro.cpp
 moc_mainwindow.cpp: ../controle_almoxarifado/mainwindow.h \
+		../controle_almoxarifado/paginacadastro.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/build-controle_almoxarifado-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../controle_almoxarifado/mainwindow.h -o moc_mainwindow.cpp
+
+moc_paginacadastro.cpp: ../controle_almoxarifado/paginacadastro.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/build-controle_almoxarifado-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../controle_almoxarifado/paginacadastro.h -o moc_paginacadastro.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_paginacadastro.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_paginacadastro.h
 ui_mainwindow.h: ../controle_almoxarifado/mainwindow.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../controle_almoxarifado/mainwindow.ui -o ui_mainwindow.h
+
+ui_paginacadastro.h: ../controle_almoxarifado/paginacadastro.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../controle_almoxarifado/paginacadastro.ui -o ui_paginacadastro.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -430,15 +466,41 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: ../controle_almoxarifado/main.cpp ../controle_almoxarifado/mainwindow.h
+aluno.o: ../controle_almoxarifado/Colaboradores/aluno.cpp ../controle_almoxarifado/Colaboradores/aluno.h \
+		../controle_almoxarifado/Data/data.h \
+		../controle_almoxarifado/Colaboradores/Pessoa/pessoa.h \
+		../controle_almoxarifado/Colaboradores/utils.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o aluno.o ../controle_almoxarifado/Colaboradores/aluno.cpp
+
+data.o: ../controle_almoxarifado/Data/data.cpp ../controle_almoxarifado/Data/data.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o data.o ../controle_almoxarifado/Data/data.cpp
+
+patrimonio.o: ../controle_almoxarifado/Patrimonio/patrimonio.cpp ../controle_almoxarifado/Patrimonio/patrimonio.h \
+		../controle_almoxarifado/Data/data.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o patrimonio.o ../controle_almoxarifado/Patrimonio/patrimonio.cpp
+
+main.o: ../controle_almoxarifado/main.cpp ../controle_almoxarifado/mainwindow.h \
+		../controle_almoxarifado/paginacadastro.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../controle_almoxarifado/main.cpp
 
+pessoa.o: ../controle_almoxarifado/Colaboradores/Pessoa/pessoa.cpp ../controle_almoxarifado/Colaboradores/Pessoa/pessoa.h \
+		../controle_almoxarifado/Data/data.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pessoa.o ../controle_almoxarifado/Colaboradores/Pessoa/pessoa.cpp
+
 mainwindow.o: ../controle_almoxarifado/mainwindow.cpp ../controle_almoxarifado/mainwindow.h \
+		../controle_almoxarifado/paginacadastro.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../controle_almoxarifado/mainwindow.cpp
 
+paginacadastro.o: ../controle_almoxarifado/paginacadastro.cpp ../controle_almoxarifado/paginacadastro.h \
+		ui_paginacadastro.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o paginacadastro.o ../controle_almoxarifado/paginacadastro.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_paginacadastro.o: moc_paginacadastro.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_paginacadastro.o moc_paginacadastro.cpp
 
 ####### Install
 
