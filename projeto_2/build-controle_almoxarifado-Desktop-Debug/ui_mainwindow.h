@@ -9,8 +9,10 @@
 #ifndef UI_MAINWINDOW_H
 #define UI_MAINWINDOW_H
 
+#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -18,6 +20,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -35,6 +38,7 @@ public:
     QGridLayout *gridLayout_2;
     QTabWidget *tabWidget_2;
     QWidget *tab_3;
+    QLabel *label_4;
     QWidget *tab_4;
     QWidget *tab_5;
     QWidget *tab_2;
@@ -44,10 +48,14 @@ public:
     QGridLayout *gridLayout_4;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLineEdit *lneNomeCadastro;
+    QLineEdit *nomeAlunoCadastro;
+    QSpacerItem *horizontalSpacer_2;
+    QLabel *label_3;
+    QComboBox *alunoSexo;
     QSpacerItem *horizontalSpacer;
     QLabel *label_2;
-    QDateEdit *dateEdit;
+    QDateEdit *dataNascimento;
+    QPushButton *btnCadastrarAluno;
     QSpacerItem *verticalSpacer;
     QWidget *tab_7;
     QWidget *tab_8;
@@ -58,7 +66,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(889, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -73,6 +81,14 @@ public:
         tabWidget_2->setObjectName(QString::fromUtf8("tabWidget_2"));
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
+        label_4 = new QLabel(tab_3);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(200, 150, 65, 33));
+        QFont font;
+        font.setPointSize(16);
+        font.setBold(true);
+        font.setWeight(75);
+        label_4->setFont(font);
         tabWidget_2->addTab(tab_3, QString());
         tab_4 = new QWidget();
         tab_4->setObjectName(QString::fromUtf8("tab_4"));
@@ -98,21 +114,36 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         label = new QLabel(tab_6);
         label->setObjectName(QString::fromUtf8("label"));
-        QFont font;
-        font.setPointSize(16);
-        font.setBold(true);
-        font.setWeight(75);
         label->setFont(font);
 
         horizontalLayout->addWidget(label);
 
-        lneNomeCadastro = new QLineEdit(tab_6);
-        lneNomeCadastro->setObjectName(QString::fromUtf8("lneNomeCadastro"));
+        nomeAlunoCadastro = new QLineEdit(tab_6);
+        nomeAlunoCadastro->setObjectName(QString::fromUtf8("nomeAlunoCadastro"));
         QFont font1;
         font1.setPointSize(16);
-        lneNomeCadastro->setFont(font1);
+        nomeAlunoCadastro->setFont(font1);
 
-        horizontalLayout->addWidget(lneNomeCadastro);
+        horizontalLayout->addWidget(nomeAlunoCadastro);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        label_3 = new QLabel(tab_6);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setFont(font);
+
+        horizontalLayout->addWidget(label_3);
+
+        alunoSexo = new QComboBox(tab_6);
+        alunoSexo->addItem(QString());
+        alunoSexo->addItem(QString());
+        alunoSexo->addItem(QString());
+        alunoSexo->setObjectName(QString::fromUtf8("alunoSexo"));
+        alunoSexo->setMinimumSize(QSize(130, 0));
+
+        horizontalLayout->addWidget(alunoSexo);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -124,15 +155,24 @@ public:
 
         horizontalLayout->addWidget(label_2);
 
-        dateEdit = new QDateEdit(tab_6);
-        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
-        dateEdit->setFont(font1);
-        dateEdit->setCalendarPopup(true);
+        dataNascimento = new QDateEdit(tab_6);
+        dataNascimento->setObjectName(QString::fromUtf8("dataNascimento"));
+        dataNascimento->setFont(font1);
+        dataNascimento->setMinimumTime(QTime(0, 0, 0));
+        dataNascimento->setCalendarPopup(true);
+        dataNascimento->setCurrentSectionIndex(0);
+        dataNascimento->setTimeSpec(Qt::LocalTime);
+        dataNascimento->setDate(QDate(2001, 1, 1));
 
-        horizontalLayout->addWidget(dateEdit);
+        horizontalLayout->addWidget(dataNascimento);
 
 
         gridLayout_4->addLayout(horizontalLayout, 0, 0, 1, 1);
+
+        btnCadastrarAluno = new QPushButton(tab_6);
+        btnCadastrarAluno->setObjectName(QString::fromUtf8("btnCadastrarAluno"));
+
+        gridLayout_4->addWidget(btnCadastrarAluno, 2, 0, 1, 1);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -155,7 +195,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 889, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -174,13 +214,20 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "Nome:", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_3), QCoreApplication::translate("MainWindow", "Aluno", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Equipamento", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "Funcionario", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Consultar", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Nome:", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Sexo", nullptr));
+        alunoSexo->setItemText(0, QCoreApplication::translate("MainWindow", "N\303\243o Identificar", nullptr));
+        alunoSexo->setItemText(1, QCoreApplication::translate("MainWindow", "Masculino", nullptr));
+        alunoSexo->setItemText(2, QCoreApplication::translate("MainWindow", "Feminino", nullptr));
+
         label_2->setText(QCoreApplication::translate("MainWindow", "Nascimento", nullptr));
-        dateEdit->setDisplayFormat(QCoreApplication::translate("MainWindow", "dd/MM/yyyy", nullptr));
+        dataNascimento->setDisplayFormat(QCoreApplication::translate("MainWindow", "dd/MM/yyyy", nullptr));
+        btnCadastrarAluno->setText(QCoreApplication::translate("MainWindow", "Cadastrar", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_6), QCoreApplication::translate("MainWindow", "Aluno", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_7), QCoreApplication::translate("MainWindow", "Equipamento", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_8), QCoreApplication::translate("MainWindow", "Funcionario", nullptr));

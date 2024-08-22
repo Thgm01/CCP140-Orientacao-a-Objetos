@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "paginacadastro.h"
-#include "Colaboradores/aluno.h"
+#include "Colaboradores/Aluno/aluno.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +26,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     PaginaCadastro *paginaCadastro;
+
+    void dataNascimentoConfig();
 
 
 

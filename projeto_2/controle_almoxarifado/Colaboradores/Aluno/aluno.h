@@ -5,8 +5,8 @@
 
 
 #include "Data/data.h"
-#include "Pessoa/pessoa.h"
-#include "utils.h"
+#include "../Pessoa/pessoa.h"
+#include "../utils.h"
 
 class Aluno : Pessoa
 {

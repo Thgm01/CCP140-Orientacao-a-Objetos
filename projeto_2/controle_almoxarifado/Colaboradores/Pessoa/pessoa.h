@@ -45,7 +45,7 @@ public:
 private:
         std::string nome;
         Data dataDeNascimento;
-        char sexo;        
+        char sexo;
 };
 
 #endif // PESSOA_H
