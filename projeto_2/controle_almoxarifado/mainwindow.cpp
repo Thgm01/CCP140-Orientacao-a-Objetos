@@ -15,7 +15,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnCadastrarAluno_clicked()
 {
-    paginaCadastro = new PaginaCadastro(this);
-    paginaCadastro->show();
+
 }
 

@@ -3,7 +3,10 @@
 
 #include <QMainWindow>
 
+#include <vector>
+
 #include "paginacadastro.h"
+#include "Colaboradores/aluno.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +26,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     PaginaCadastro *paginaCadastro;
+
+
+
 };
 
 #endif // MAINWINDOW_H
