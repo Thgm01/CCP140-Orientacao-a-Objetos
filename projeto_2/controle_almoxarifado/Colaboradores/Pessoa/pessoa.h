@@ -35,12 +35,46 @@ public:
         std::string getNome();
 
         /**
+         * @brief Função para obter a data de nascimento da pessoa
+         *
+         * @return std::array - Array com dia, mes e ano
+         */
+        std::array<int, 3> getDataDeNascimento();
+
+        /**
+         * @brief Função para obter qual o sexo da pessoa
+         *
+         * @return std::string - Sexo da pessoa não abreviado
+         */
+        std::string getSexo();
+
+        /**
+         * @brief Função para obter idade da pessoa
+         *
+         * @return Idade atual da pessoa
+         */
+        int getIdade();
+
+        /**
          * @brief Difinir um nome para pessoa
          * 
          * @param nome Nome da pessoa
          */
         void setNome(std::string nome);
 
+        /**
+         * @brief Editar a data de nascimento da pessoa
+         *
+         * @param dataDeNascimento - Data editada de nascimento
+         */
+        void setDataDeNascimento(Data dataDeNascimento);
+
+        /**
+         * @brief setSexo
+         *
+         * @param sexo
+         */
+        void setSexo(char sexo);
 
 private:
         std::string nome;

@@ -8,7 +8,7 @@
 #include "../Pessoa/pessoa.h"
 #include "../utils.h"
 
-class Aluno : Pessoa
+class Aluno : public Pessoa
 {
 public:
     Aluno(std::string nome, Data dataDeNascimento, char sexo);

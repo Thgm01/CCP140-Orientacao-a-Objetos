@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>889</width>
+    <width>1044</width>
     <height>600</height>
    </rect>
   </property>
@@ -102,6 +102,12 @@
               </item>
               <item>
                <widget class="QLineEdit" name="nomeAlunoCadastro">
+                <property name="minimumSize">
+                 <size>
+                  <width>435</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
@@ -270,7 +276,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>889</width>
+     <width>1044</width>
      <height>22</height>
     </rect>
    </property>

@@ -33,11 +33,7 @@ void MainWindow::on_btnCadastrarAluno_clicked()
 
     Aluno novoAluno = Aluno(alunoNome, dataNascimento, alunoSexo);
 
-    std::cout << "nome: " << novoAluno.nome ;/*<< "  Nascimento: " << novoAluno.dataDeNascimento << "  Sexo: " << novoAluno.sexo << std::endl;*/
-
-
-
-
+    std::cout << "nome: " << novoAluno.getNome() << std::endl;/* << "  Nascimento: " << novoAluno.dataDeNascimento;*/ /*<< "  Sexo: " << novoAluno.sexo << std::endl;*/
 
 }
 
