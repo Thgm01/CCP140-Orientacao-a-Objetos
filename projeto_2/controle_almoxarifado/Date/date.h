@@ -16,6 +16,7 @@ public:
     void setTodayDate();
 
     bool isBefore(const Date &date);
+    int diffYears(const Date &date);
 
 private:
     int day;

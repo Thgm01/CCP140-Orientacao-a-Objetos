@@ -66,7 +66,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(889, 600);
+        MainWindow->resize(1044, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -120,6 +120,7 @@ public:
 
         nomeAlunoCadastro = new QLineEdit(tab_6);
         nomeAlunoCadastro->setObjectName(QString::fromUtf8("nomeAlunoCadastro"));
+        nomeAlunoCadastro->setMinimumSize(QSize(435, 0));
         QFont font1;
         font1.setPointSize(16);
         nomeAlunoCadastro->setFont(font1);
@@ -195,7 +196,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 889, 22));
+        menubar->setGeometry(QRect(0, 0, 1044, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));

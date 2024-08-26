@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "Data/data.h"
+#include "Date/date.h"
 
 class Patrimonio
 {
@@ -15,7 +15,7 @@ private:
     std::string marca;
     std::string modelo;
     std::string descricao;
-    Data        dataEntrada;
+    Date        dataEntrada;
 };
 
 #endif // PATRIMONIO_H

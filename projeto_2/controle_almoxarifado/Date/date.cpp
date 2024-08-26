@@ -42,3 +42,13 @@ bool Date::isBefore(const Date& date)
     }
     else return this->year < date.year;
 }
+
+int Date::diffYears(const Date &date)
+{
+    int years = date.year - this->year;
+
+    if(this->month > date.month) years -= 1;
+    else if(this->month == date.month && this->day > date.month) years -= 1;
+
+    return years;
+}
