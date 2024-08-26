@@ -37,7 +37,7 @@ bool Date::isBefore(const Date& date)
 {
     if(this->year == date.year)
     {
-        if(this->month == date.year) return this->day <= date.day;
+        if(this->month == date.month) return this->day <= date.day;
         else return this->month < date.month;
     }
     else return this->year < date.year;

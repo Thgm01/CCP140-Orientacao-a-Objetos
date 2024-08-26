@@ -35,7 +35,8 @@ void MainWindow::on_btnCadastrarAluno_clicked()
 
 //    std::cout << "nome: " << novoAluno.getNome() << std::endl;/* << "  Nascimento: " << novoAluno.dataDeNascimento;*/ /*<< "  Sexo: " << novoAluno.sexo << std::endl;*/
 
-
+    Date data1 = Date(27, 8, 2024);
+    std::cout << data1.isBefore(Date()) << std::endl;
 
 }
 
