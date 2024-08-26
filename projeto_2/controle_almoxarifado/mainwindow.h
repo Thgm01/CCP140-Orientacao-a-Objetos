@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "paginacadastro.h"
-#include "Collaborators/Student/aluno.h"
+#include "Collaborators/Student/student.h"
 
 namespace Ui {
 class MainWindow;
