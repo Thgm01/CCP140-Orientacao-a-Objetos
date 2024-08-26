@@ -4,20 +4,20 @@
 #include <vector>
 
 
-#include "Data/data.h"
-#include "../Pessoa/pessoa.h"
+#include "Date/date.h"
+#include "../Person/person.h"
 #include "../utils.h"
 
-class Aluno : public Pessoa
+class Aluno : public Person
 {
 public:
-    Aluno(std::string nome, Data dataDeNascimento, char sexo);
+    Aluno(std::string nome, Date birthdayDate, char gender);
     
     // void setNome(std::string Nome);
 
 private:
     std::vector<int>    numMatricula;
-    Data                dataMatricula;
+    Date                dataMatricula;
     Curso               curso;
     int                 ciclo;
     Status              status;

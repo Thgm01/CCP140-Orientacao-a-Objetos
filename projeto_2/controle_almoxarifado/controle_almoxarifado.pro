@@ -9,22 +9,22 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Colaboradores/Aluno/aluno.cpp \
-    Colaboradores/Aluno/listaalunos.cpp \
-    Data/data.cpp \
+    Collaborators/Student/aluno.cpp \
+    Collaborators/Student/listaalunos.cpp \
+    Date/date.cpp \
     Patrimonio/patrimonio.cpp \
     main.cpp \
-    Colaboradores/Pessoa/pessoa.cpp \
+    Collaborators/Person/person.cpp \
     mainwindow.cpp \
     paginacadastro.cpp
 
 HEADERS += \
-    Colaboradores/Aluno/aluno.h \
-    Colaboradores/Aluno/listaalunos.h \
-    Data/data.h \
+    Collaborators/Student/aluno.h \
+    Collaborators/Student/listaalunos.h \
+    Date/date.h \
     Patrimonio/patrimonio.h \
-    Colaboradores/Pessoa/pessoa.h \
-    Colaboradores/utils.h \
+    Collaborators/Person/person.h \
+    Collaborators/utils.h \
     mainwindow.h \
     paginacadastro.h
 
