@@ -24,19 +24,42 @@ void MainWindow::dataNascimentoConfig()
 
 void MainWindow::on_btnCadastrarAluno_clicked()
 {
-//    Date dataNascimento = Data(ui->dataNascimento->date().day(),
+
+//    Date dataNascimento = Date(ui->dataNascimento->date().day(),
 //                              ui->dataNascimento->date().month(),
 //                              ui->dataNascimento->date().year());
 
 //    std::string alunoNome = ui->nomeAlunoCadastro->text().toStdString();
 //    char alunoSexo = ui->alunoSexo->currentText().toStdString()[0];
 
-//    Aluno novoAluno = Aluno(alunoNome, dataNascimento, alunoSexo);
+//    Student novoAluno = Student(alunoNome, dataNascimento, alunoSexo, );
 
 //    std::cout << "nome: " << novoAluno.getNome() << std::endl;/* << "  Nascimento: " << novoAluno.dataDeNascimento;*/ /*<< "  Sexo: " << novoAluno.sexo << std::endl;*/
 
-    Date data1 = Date(27, 8, 2024);
-    std::cout << data1.isBefore(Date()) << std::endl;
+}
 
+Student *MainWindow::recebeInfoAluno()
+{
+//    std::string name, Date birthdayDate, char gender,
+//                std::string registrationNum, Date registrationDate,
+//                Curso course, int semester, Status status
+
+    std::string alunoNome = ui->nomeAlunoCadastro->text().toStdString();
+
+    Date dataNascimento = Date(ui->dataNascimento->date().day(),
+                               ui->dataNascimento->date().month(),
+                               ui->dataNascimento->date().year());
+
+    char alunoSexo = ui->alunoSexo->currentText().toStdString()[0];
+
+    std::string raAluno = ui->raAlunoCadastro->text().toStdString();
+
+    Curso curso = static_cast<Curso>(ui->cursoAlunoCadastro->currentIndex());
+
+    int semestre = ui->semestreAlunoCadastro->text().toInt();
+
+    Student *aluno = new Student(alunoNome, dataNascimento, alunoSexo, raAluno, Date(), curso, semestre, Status::Ok);
+
+    return aluno;
 }
 
