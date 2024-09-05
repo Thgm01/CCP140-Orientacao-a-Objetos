@@ -55,6 +55,10 @@ public:
     QSpacerItem *horizontalSpacer;
     QLabel *label_2;
     QDateEdit *dataNascimento;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_5;
+    QLineEdit *raAlunoCadastro;
+    QSpacerItem *horizontalSpacer_3;
     QPushButton *btnCadastrarAluno;
     QSpacerItem *verticalSpacer;
     QWidget *tab_7;
@@ -143,6 +147,9 @@ public:
         alunoSexo->addItem(QString());
         alunoSexo->setObjectName(QString::fromUtf8("alunoSexo"));
         alunoSexo->setMinimumSize(QSize(130, 0));
+        QFont font2;
+        font2.setPointSize(11);
+        alunoSexo->setFont(font2);
 
         horizontalLayout->addWidget(alunoSexo);
 
@@ -170,14 +177,40 @@ public:
 
         gridLayout_4->addLayout(horizontalLayout, 0, 0, 1, 1);
 
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_5 = new QLabel(tab_6);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setFont(font);
+
+        horizontalLayout_2->addWidget(label_5);
+
+        raAlunoCadastro = new QLineEdit(tab_6);
+        raAlunoCadastro->setObjectName(QString::fromUtf8("raAlunoCadastro"));
+        raAlunoCadastro->setMinimumSize(QSize(0, 0));
+        raAlunoCadastro->setMaximumSize(QSize(166, 100));
+        raAlunoCadastro->setFont(font);
+        raAlunoCadastro->setLayoutDirection(Qt::LeftToRight);
+        raAlunoCadastro->setInputMethodHints(Qt::ImhDigitsOnly);
+        raAlunoCadastro->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(raAlunoCadastro);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_3);
+
+
+        gridLayout_4->addLayout(horizontalLayout_2, 2, 0, 1, 1);
+
         btnCadastrarAluno = new QPushButton(tab_6);
         btnCadastrarAluno->setObjectName(QString::fromUtf8("btnCadastrarAluno"));
 
-        gridLayout_4->addWidget(btnCadastrarAluno, 2, 0, 1, 1);
+        gridLayout_4->addWidget(btnCadastrarAluno, 6, 0, 1, 1);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout_4->addItem(verticalSpacer, 1, 0, 1, 1);
+        gridLayout_4->addItem(verticalSpacer, 3, 0, 1, 1);
 
         tabWidget_3->addTab(tab_6, QString());
         tab_7 = new QWidget();
@@ -228,6 +261,8 @@ public:
 
         label_2->setText(QCoreApplication::translate("MainWindow", "Nascimento", nullptr));
         dataNascimento->setDisplayFormat(QCoreApplication::translate("MainWindow", "dd/MM/yyyy", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "RA: ", nullptr));
+        raAlunoCadastro->setText(QString());
         btnCadastrarAluno->setText(QCoreApplication::translate("MainWindow", "Cadastrar", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_6), QCoreApplication::translate("MainWindow", "Aluno", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_7), QCoreApplication::translate("MainWindow", "Equipamento", nullptr));
