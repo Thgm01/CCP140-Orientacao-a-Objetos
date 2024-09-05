@@ -10,3 +10,8 @@ Student::Student(std::string name, Date birthdayDate, char gender,
     this->semester          = semester;
     this->status            = status;
 }
+
+bool Student::operator==(const Student &student)
+{
+    return (this->registrationNum.compare(student.registrationNum) != 0);
+}

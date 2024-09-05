@@ -10,7 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     Collaborators/Student/student.cpp \
-    Collaborators/Student/listaalunos.cpp \
+    Collaborators/List/collaboratorslist.cpp \
     Date/date.cpp \
     Patrimonio/patrimonio.cpp \
     main.cpp \
@@ -20,7 +20,7 @@ SOURCES += \
 
 HEADERS += \
     Collaborators/Student/student.h \
-    Collaborators/Student/listaalunos.h \
+    Collaborators/List/collaboratorslist.h \
     Date/date.h \
     Patrimonio/patrimonio.h \
     Collaborators/Person/person.h \

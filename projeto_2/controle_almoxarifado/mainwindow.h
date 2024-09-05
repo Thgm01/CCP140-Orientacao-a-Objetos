@@ -20,6 +20,10 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    std::vector<Student> listaAluno;
+
+    Student *recebeInfoAluno();
+
 private slots:
     void on_btnCadastrarAluno_clicked();
 

@@ -3,7 +3,6 @@
 
 #include <vector>
 
-
 #include "Date/date.h"
 #include "../Person/person.h"
 #include "../utils.h"
@@ -14,6 +13,8 @@ public:
     Student(std::string name, Date birthdayDate, char gender,
             std::string registrationNum, Date registrationDate,
             Curso course, int semester, Status status);
+
+    bool operator==(const Student &student);
     
 
 
