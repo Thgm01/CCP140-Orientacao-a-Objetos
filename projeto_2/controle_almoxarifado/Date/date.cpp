@@ -74,6 +74,7 @@ void Date::setMonth(const int &month)
     else std::cout << "Invalid Month" << std::endl;
 
 }
+
 void Date::setYear(const int &year)
 {
     if(year > 0) this->year = year;
