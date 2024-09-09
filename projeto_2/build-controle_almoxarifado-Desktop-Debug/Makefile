@@ -53,7 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../controle_almoxarifado/Collaborators/Student/student.cpp \
-		../controle_almoxarifado/Collaborators/Student/listaalunos.cpp \
+		../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp \
 		../controle_almoxarifado/Date/date.cpp \
 		../controle_almoxarifado/Patrimonio/patrimonio.cpp \
 		../controle_almoxarifado/main.cpp \
@@ -62,7 +62,7 @@ SOURCES       = ../controle_almoxarifado/Collaborators/Student/student.cpp \
 		../controle_almoxarifado/paginacadastro.cpp moc_mainwindow.cpp \
 		moc_paginacadastro.cpp
 OBJECTS       = student.o \
-		listaalunos.o \
+		collaboratorslist.o \
 		date.o \
 		patrimonio.o \
 		main.o \
@@ -166,14 +166,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../controle_almoxarifado/controle_almoxarifado.pro ../controle_almoxarifado/Collaborators/Student/student.h \
-		../controle_almoxarifado/Collaborators/Student/listaalunos.h \
+		../controle_almoxarifado/Collaborators/List/collaboratorslist.h \
 		../controle_almoxarifado/Date/date.h \
 		../controle_almoxarifado/Patrimonio/patrimonio.h \
 		../controle_almoxarifado/Collaborators/Person/person.h \
 		../controle_almoxarifado/Collaborators/utils.h \
 		../controle_almoxarifado/mainwindow.h \
 		../controle_almoxarifado/paginacadastro.h ../controle_almoxarifado/Collaborators/Student/student.cpp \
-		../controle_almoxarifado/Collaborators/Student/listaalunos.cpp \
+		../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp \
 		../controle_almoxarifado/Date/date.cpp \
 		../controle_almoxarifado/Patrimonio/patrimonio.cpp \
 		../controle_almoxarifado/main.cpp \
@@ -397,8 +397,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../controle_almoxarifado/Collaborators/Student/student.h ../controle_almoxarifado/Collaborators/Student/listaalunos.h ../controle_almoxarifado/Date/date.h ../controle_almoxarifado/Patrimonio/patrimonio.h ../controle_almoxarifado/Collaborators/Person/person.h ../controle_almoxarifado/Collaborators/utils.h ../controle_almoxarifado/mainwindow.h ../controle_almoxarifado/paginacadastro.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../controle_almoxarifado/Collaborators/Student/student.cpp ../controle_almoxarifado/Collaborators/Student/listaalunos.cpp ../controle_almoxarifado/Date/date.cpp ../controle_almoxarifado/Patrimonio/patrimonio.cpp ../controle_almoxarifado/main.cpp ../controle_almoxarifado/Collaborators/Person/person.cpp ../controle_almoxarifado/mainwindow.cpp ../controle_almoxarifado/paginacadastro.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../controle_almoxarifado/Collaborators/Student/student.h ../controle_almoxarifado/Collaborators/List/collaboratorslist.h ../controle_almoxarifado/Date/date.h ../controle_almoxarifado/Patrimonio/patrimonio.h ../controle_almoxarifado/Collaborators/Person/person.h ../controle_almoxarifado/Collaborators/utils.h ../controle_almoxarifado/mainwindow.h ../controle_almoxarifado/paginacadastro.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../controle_almoxarifado/Collaborators/Student/student.cpp ../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp ../controle_almoxarifado/Date/date.cpp ../controle_almoxarifado/Patrimonio/patrimonio.cpp ../controle_almoxarifado/main.cpp ../controle_almoxarifado/Collaborators/Person/person.cpp ../controle_almoxarifado/mainwindow.cpp ../controle_almoxarifado/paginacadastro.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../controle_almoxarifado/mainwindow.ui ../controle_almoxarifado/paginacadastro.ui $(DISTDIR)/
 
 
@@ -480,8 +480,12 @@ student.o: ../controle_almoxarifado/Collaborators/Student/student.cpp ../control
 		../controle_almoxarifado/Collaborators/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o student.o ../controle_almoxarifado/Collaborators/Student/student.cpp
 
-listaalunos.o: ../controle_almoxarifado/Collaborators/Student/listaalunos.cpp ../controle_almoxarifado/Collaborators/Student/listaalunos.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o listaalunos.o ../controle_almoxarifado/Collaborators/Student/listaalunos.cpp
+collaboratorslist.o: ../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp ../controle_almoxarifado/Collaborators/List/collaboratorslist.h \
+		../controle_almoxarifado/Collaborators/Student/student.h \
+		../controle_almoxarifado/Date/date.h \
+		../controle_almoxarifado/Collaborators/Person/person.h \
+		../controle_almoxarifado/Collaborators/utils.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o collaboratorslist.o ../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp
 
 date.o: ../controle_almoxarifado/Date/date.cpp ../controle_almoxarifado/Date/date.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o date.o ../controle_almoxarifado/Date/date.cpp

@@ -18,6 +18,7 @@
 class Person
 {
 public:
+
         /**
          * @brief Class constructor
          * 
@@ -26,6 +27,13 @@ public:
          * @param gender
          */
         Person(std::string name, Date birthdayDate, char gender);
+        
+        
+        //   ____      _   _                
+        //  / ___| ___| |_| |_ ___ _ __ ___ 
+        // | |  _ / _ \ __| __/ _ \ '__/ __|
+        // | |_| |  __/ |_| ||  __/ |  \__ \ 
+        //  \____|\___|\__|\__\___|_|  |___/
         
         /**
          * @brief
@@ -56,6 +64,27 @@ public:
         int getAge();
 
         /**
+         * @brief Get the Phone object
+         * 
+         * @return person phone number
+         */
+        std::string getPhone();        
+
+        /**
+         * @brief Get the Email object
+         * 
+         * @return person email
+         */
+        std::string getEmail();
+
+
+        //  ____       _   _                
+        // / ___|  ___| |_| |_ ___ _ __ ___ 
+        // \___ \ / _ \ __| __/ _ \ '__/ __|
+        //  ___) |  __/ |_| ||  __/ |  \__ \
+        // |____/ \___|\__|\__\___|_|  |___/
+
+        /**
          * @brief Function for edit person name
          * 
          * @param name new person name
@@ -76,10 +105,26 @@ public:
          */
         void setGender(char gender);
 
+        /**
+         * @brief Set the Phone object
+         * 
+         * @param phone new person phone
+         */
+        void setPhone(std::string phone);
+
+        /**
+         * @brief Set the Email object
+         * 
+         * @param email new person email
+         */
+        void setEmail(std::string email);
+
 private:
         std::string name;
         Date birthdayDate;
         char gender;
+        std::string phone;
+        std::string email;
 };
 
 #endif // PESSOA_H

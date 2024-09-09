@@ -22,6 +22,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
@@ -46,6 +47,17 @@ public:
     QTabWidget *tabWidget_3;
     QWidget *tab_6;
     QGridLayout *gridLayout_4;
+    QSpacerItem *verticalSpacer;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_5;
+    QLineEdit *raAlunoCadastro;
+    QSpacerItem *horizontalSpacer_4;
+    QLabel *label_6;
+    QComboBox *cursoAlunoCadastro;
+    QSpacerItem *horizontalSpacer_5;
+    QLabel *label_7;
+    QSpinBox *semestreAlunoCadastro;
+    QSpacerItem *horizontalSpacer_3;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLineEdit *nomeAlunoCadastro;
@@ -55,12 +67,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QLabel *label_2;
     QDateEdit *dataNascimento;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_5;
-    QLineEdit *raAlunoCadastro;
-    QSpacerItem *horizontalSpacer_3;
     QPushButton *btnCadastrarAluno;
-    QSpacerItem *verticalSpacer;
     QWidget *tab_7;
     QWidget *tab_8;
     QMenuBar *menubar;
@@ -114,6 +121,75 @@ public:
         tab_6->setObjectName(QString::fromUtf8("tab_6"));
         gridLayout_4 = new QGridLayout(tab_6);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_4->addItem(verticalSpacer, 4, 0, 1, 1);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_5 = new QLabel(tab_6);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setFont(font);
+
+        horizontalLayout_2->addWidget(label_5);
+
+        raAlunoCadastro = new QLineEdit(tab_6);
+        raAlunoCadastro->setObjectName(QString::fromUtf8("raAlunoCadastro"));
+        raAlunoCadastro->setMinimumSize(QSize(0, 0));
+        raAlunoCadastro->setMaximumSize(QSize(166, 100));
+        raAlunoCadastro->setFont(font);
+        raAlunoCadastro->setLayoutDirection(Qt::LeftToRight);
+        raAlunoCadastro->setInputMethodHints(Qt::ImhDigitsOnly);
+        raAlunoCadastro->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(raAlunoCadastro);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_4);
+
+        label_6 = new QLabel(tab_6);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setFont(font);
+
+        horizontalLayout_2->addWidget(label_6);
+
+        cursoAlunoCadastro = new QComboBox(tab_6);
+        cursoAlunoCadastro->addItem(QString());
+        cursoAlunoCadastro->addItem(QString());
+        cursoAlunoCadastro->addItem(QString());
+        cursoAlunoCadastro->addItem(QString());
+        cursoAlunoCadastro->addItem(QString());
+        cursoAlunoCadastro->addItem(QString());
+        cursoAlunoCadastro->setObjectName(QString::fromUtf8("cursoAlunoCadastro"));
+        cursoAlunoCadastro->setMinimumSize(QSize(147, 0));
+
+        horizontalLayout_2->addWidget(cursoAlunoCadastro);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_5);
+
+        label_7 = new QLabel(tab_6);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setFont(font);
+
+        horizontalLayout_2->addWidget(label_7);
+
+        semestreAlunoCadastro = new QSpinBox(tab_6);
+        semestreAlunoCadastro->setObjectName(QString::fromUtf8("semestreAlunoCadastro"));
+        semestreAlunoCadastro->setMinimum(1);
+        semestreAlunoCadastro->setMaximum(12);
+
+        horizontalLayout_2->addWidget(semestreAlunoCadastro);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_3);
+
+
+        gridLayout_4->addLayout(horizontalLayout_2, 2, 0, 1, 1);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         label = new QLabel(tab_6);
@@ -177,40 +253,10 @@ public:
 
         gridLayout_4->addLayout(horizontalLayout, 0, 0, 1, 1);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_5 = new QLabel(tab_6);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setFont(font);
-
-        horizontalLayout_2->addWidget(label_5);
-
-        raAlunoCadastro = new QLineEdit(tab_6);
-        raAlunoCadastro->setObjectName(QString::fromUtf8("raAlunoCadastro"));
-        raAlunoCadastro->setMinimumSize(QSize(0, 0));
-        raAlunoCadastro->setMaximumSize(QSize(166, 100));
-        raAlunoCadastro->setFont(font);
-        raAlunoCadastro->setLayoutDirection(Qt::LeftToRight);
-        raAlunoCadastro->setInputMethodHints(Qt::ImhDigitsOnly);
-        raAlunoCadastro->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_2->addWidget(raAlunoCadastro);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer_3);
-
-
-        gridLayout_4->addLayout(horizontalLayout_2, 2, 0, 1, 1);
-
         btnCadastrarAluno = new QPushButton(tab_6);
         btnCadastrarAluno->setObjectName(QString::fromUtf8("btnCadastrarAluno"));
 
-        gridLayout_4->addWidget(btnCadastrarAluno, 6, 0, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_4->addItem(verticalSpacer, 3, 0, 1, 1);
+        gridLayout_4->addWidget(btnCadastrarAluno, 7, 0, 1, 1);
 
         tabWidget_3->addTab(tab_6, QString());
         tab_7 = new QWidget();
@@ -253,6 +299,17 @@ public:
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_4), QCoreApplication::translate("MainWindow", "Equipamento", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(tab_5), QCoreApplication::translate("MainWindow", "Funcionario", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Consultar", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "RA: ", nullptr));
+        raAlunoCadastro->setText(QString());
+        label_6->setText(QCoreApplication::translate("MainWindow", "Curso", nullptr));
+        cursoAlunoCadastro->setItemText(0, QCoreApplication::translate("MainWindow", "Eng. Aut. e Cont.", nullptr));
+        cursoAlunoCadastro->setItemText(1, QCoreApplication::translate("MainWindow", "Eng.  Ele.", nullptr));
+        cursoAlunoCadastro->setItemText(2, QCoreApplication::translate("MainWindow", "Eng. de Rob\303\264s", nullptr));
+        cursoAlunoCadastro->setItemText(3, QCoreApplication::translate("MainWindow", "Eng. Civil", nullptr));
+        cursoAlunoCadastro->setItemText(4, QCoreApplication::translate("MainWindow", "Eng. Mec\303\242nica", nullptr));
+        cursoAlunoCadastro->setItemText(5, QCoreApplication::translate("MainWindow", "Cien. da Comp.", nullptr));
+
+        label_7->setText(QCoreApplication::translate("MainWindow", "Semestre", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Nome:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Sexo", nullptr));
         alunoSexo->setItemText(0, QCoreApplication::translate("MainWindow", "N\303\243o Identificar", nullptr));
@@ -261,8 +318,6 @@ public:
 
         label_2->setText(QCoreApplication::translate("MainWindow", "Nascimento", nullptr));
         dataNascimento->setDisplayFormat(QCoreApplication::translate("MainWindow", "dd/MM/yyyy", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "RA: ", nullptr));
-        raAlunoCadastro->setText(QString());
         btnCadastrarAluno->setText(QCoreApplication::translate("MainWindow", "Cadastrar", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_6), QCoreApplication::translate("MainWindow", "Aluno", nullptr));
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_7), QCoreApplication::translate("MainWindow", "Equipamento", nullptr));
