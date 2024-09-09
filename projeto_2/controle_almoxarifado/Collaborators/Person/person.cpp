@@ -1,10 +1,12 @@
 #include "person.h"
 
-Person::Person(std::string name, Date birthdayDate, char gender)
+Person::Person(std::string name, Date birthdayDate, char gender, std::string phone, std::string email)
 {
     this->name = name;
-    this->birthdayDate = birthdayDate;
+    setBirthdayDate(birthdayDate);
     this->gender = gender;
+    this->phone = phone;
+    this->email = email;
 }
 
 
