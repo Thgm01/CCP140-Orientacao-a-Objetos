@@ -39,9 +39,11 @@ std::string Person::getGender()
     };
 }
 
-int Person::getAge() //fazer essa função
+int Person::getAge()
 {
-    return 0;
+    Date today = Date();
+    int age = today.diffYears(Date());
+    return age;
 }
 
 std::string Person::getPhone()
