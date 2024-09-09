@@ -10,7 +10,13 @@ Date::Date(int day, int month, int year)
     this->setDate(day, month, year);
 }
 
-/*========================= GETTERS =========================*/
+
+//   ____      _   _                
+//  / ___| ___| |_| |_ ___ _ __ ___ 
+// | |  _ / _ \ __| __/ _ \ '__/ __|
+// | |_| |  __/ |_| ||  __/ |  \__ \  
+//  \____|\___|\__|\__\___|_|  |___/
+
 std::array<int, 3> Date::getDate()
 {
     return std::array<int, 3>{this->day, this->month, this->year};
@@ -32,12 +38,17 @@ int Date::getYear()
 }
 
 
-/*========================= SETTERS =========================*/
+//  ____       _   _                
+// / ___|  ___| |_| |_ ___ _ __ ___ 
+// \___ \ / _ \ __| __/ _ \ '__/ __|
+//  ___) |  __/ |_| ||  __/ |  \__ \
+// |____/ \___|\__|\__\___|_|  |___/
+
 void Date::setDate(const int &day, const int &month, const int &year)
 {
-    this->day = day;
-    this->month = month;
-    this->year = year;
+    this->setDay(day);
+    this->setMonth(month);
+    this->setYear(year);
 }
 
 void Date::setTodayDate()
@@ -81,8 +92,11 @@ void Date::setYear(const int &year)
     else std::cout << "Invalid Year" << std::endl;
 }
 
-
-/*========================= OTHERS =========================*/
+//   ___  _   _                   
+//  / _ \| |_| |__   ___ _ __ ___ 
+// | | | | __| '_ \ / _ \ '__/ __|
+// | |_| | |_| | | |  __/ |  \__ \
+//  \___/ \__|_| |_|\___|_|  |___/
 
 bool Date::isBefore(const Date& date)
 {
@@ -108,5 +122,3 @@ bool Date::isLeapYear(const int &year)
 {
     return (year % 4) == 0 && ((year % 100) != 0 || (year % 400) == 0);
 }
-
-
