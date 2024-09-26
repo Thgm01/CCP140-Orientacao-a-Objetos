@@ -1,21 +1,10 @@
-#include "Sensores/Componente/Componente.hpp"
+#include "Sensores/Temperatura/Temperatura.hpp"
 
 #include <iostream>
 
 int main()
 {
-    Componente componente = Componente();
+    Temperatura temp = Temperatura(50);
 
-    componente.ligar();
-    componente.ligar();
-    componente.conectar();
-
-    for(int i=0; i<100; i++)
-    {
-        std::cout << componente.getValor() << std::endl;
-    }
-    componente.desligar();
-    componente.desligar();
-
-    return 0;
+    for(int i=0; i<100; i++) std::cout << temp.getTemperaturaEmC() << std::endl;
 }

@@ -18,8 +18,9 @@
 class Componente
 {
     public:
-        Componente();
-        
+        Componente(int initialValue);
+        ~Componente();    
+
         void ligar();
         void desligar();
         bool conectar();
@@ -29,6 +30,7 @@ class Componente
     private:
         bool ligado;
         bool conectado;
+        int initialValue = -1;
         int  valor = -1;
         std::string nome;
 };
