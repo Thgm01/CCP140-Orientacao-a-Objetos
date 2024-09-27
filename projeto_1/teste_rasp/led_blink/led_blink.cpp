@@ -19,10 +19,10 @@ int main()
   {
     gpioWrite(led_pin, 1);
     std::cout << "LED ON" << std::endl;
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(1));
 
     gpioWrite(led_pin, 0);
-    std::cout << "LED ON" << std::endl;
+    std::cout << "LED OFF" << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
   }
 }

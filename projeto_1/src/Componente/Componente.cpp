@@ -1,60 +1,61 @@
 #include "Componente/Componente.hpp"
 
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
+#include <ostream>
+#include <pigpio.h>
 
-Componente::Componente(int initialValue) 
+Componente::Componente(int pino) 
 { 
-  srand(time(NULL)); 
-  this->initialValue = initialValue;
+  srand(time(NULL));
+  this->pino = pino;
 }
 
-void Componente::ligar() {
-  try {
-    if (this->ligado)
-      throw 1;
-
-    this->ligado = true;
-    std::cout << "Componente está ligando" << std::endl;
-  } catch (...) {
-    std::cout << "O Componente já está ligado" << std::endl;
-  }
-}
-
-void Componente::desligar() {
-  try {
-    if (!this->ligado) {
-      throw 1;
-    }
-    this->ligado = false;
-    std::cout << "Componente está desligando" << std::endl;
-  } catch (...) {
-    std::cout << "O Componente já está desligado" << std::endl;
-  }
-}
-
-bool Componente::conectar() // FAZER
+Componente::~Componente()
 {
-  if (this->ligado) {
+}
+
+int Componente::ligar()
+{
+  if(gpioInitialise() < 0)
+  {
+    std::cerr << "Falha ao iniciar" << std::endl;
+    this->ligado = false;
+    return -1;
+  }
+
+  this->ligado = true;
+}
+
+void Componente::desligar()
+{
+  this->ligado = false;
+  this->desconectar();
+}
+
+bool Componente::conectar()
+{
+  if(this->ligado)
+  {
     this->conectado = true;
-    this->valor = initialValue;
     return true;
   }
 
-  this->conectado = false;
+  std::cout << "Componente não está ligado ainda" << std::endl;
   return false;
 }
 
-void Componente::desconectar() // FAZER
+void Componente::desconectar()
 {
   this->conectado = false;
 }
 
-int Componente::getValor() {
-  
-  if (this->conectado)
-  {
-    this->valor += rand() % 10 - rand() % 10;
-  }
-
+int Componente::getValor()
+{
+  this->valor = rand() % 1023;
   return this->valor;
 }
+
+
+

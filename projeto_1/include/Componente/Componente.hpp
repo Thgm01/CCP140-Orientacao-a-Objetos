@@ -5,7 +5,7 @@
  * @version 0.1
  * @date 2024-09-23
  * 
- * @copyright Copyright (c) 2024
+* @copyright Copyright (c) 2024
  * 
  */
 
@@ -18,20 +18,21 @@
 class Componente
 {
     public:
-        Componente(int initialValue);
+        Componente(int pino);
         ~Componente();    
 
-        void ligar();
+        int ligar();
         void desligar();
         bool conectar();
         void desconectar();
         int  getValor();
     
     private:
-        bool ligado;
-        bool conectado;
-        int initialValue = -1;
+        bool ligado = false;
+        bool conectado = false;
         int  valor = -1;
+        int  pino;
+        
         std::string nome;
 };
 
