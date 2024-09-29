@@ -19,13 +19,15 @@ class Componente
 {
     public:
         Componente(int pino);
-        ~Componente();    
+        ~Componente();        
 
-        int ligar();
+        virtual int ligar();
+        bool estaLigado();
         void desligar();
-        bool conectar();
+        virtual bool conectar();
         void desconectar();
         int  getValor();
+        int getPino();
     
     private:
         bool ligado = false;

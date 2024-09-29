@@ -28,6 +28,11 @@ int Componente::ligar()
   this->ligado = true;
 }
 
+bool Componente::estaLigado()
+{
+  return this->ligado;
+}
+
 void Componente::desligar()
 {
   this->ligado = false;
@@ -55,6 +60,11 @@ int Componente::getValor()
 {
   this->valor = rand() % 1023;
   return this->valor;
+}
+
+int Componente::getPino()
+{
+  return this->pino;
 }
 
 
