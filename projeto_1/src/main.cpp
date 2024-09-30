@@ -1,10 +1,14 @@
-#include "Sensores/Temperatura/Temperatura.hpp"
+// #include "Sensores/Temperatura/Temperatura.hpp"
+
+#include "Atuadores/Atuador.hpp"
 
 #include <iostream>
 
 int main()
 {
-    Temperatura temp = Temperatura(50);
+    std::cout << "Inicio do programa" std::endl;
 
-    for(int i=0; i<100; i++) std::cout << temp.getTemperaturaEmC() << std::endl;
+    Atuador at1 = Atuador(17);
+    Atuador at2 = Atuador(18);
+
 }
