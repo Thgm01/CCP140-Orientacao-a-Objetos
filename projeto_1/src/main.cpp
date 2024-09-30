@@ -11,4 +11,12 @@ int main()
     Atuador at1 = Atuador(17);
     Atuador at2 = Atuador(18);
 
+    at1.conectar();
+    at1.setValor(0);
+    
+
+    at2.conectar();
+    at2.setValor(1);
+
+
 }
