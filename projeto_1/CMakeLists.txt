@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(Projeto1 VERSION 1.0)
 
+find_package(PkgConfig REQUIRED)
 pkg_check_modules(PIGPIO REQUIRED pigpio)
 
 include_directories(${PIGPIO_INCLUDE_DIRS})
