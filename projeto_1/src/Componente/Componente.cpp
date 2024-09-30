@@ -67,5 +67,10 @@ int Componente::getPino()
   return this->pino;
 }
 
+bool Componente::estaConectado()
+{
+  return this->conectado;
+}
+
 
 

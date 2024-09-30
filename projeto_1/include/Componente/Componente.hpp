@@ -5,7 +5,7 @@
  * @version 0.1
  * @date 2024-09-23
  * 
-* @copyright Copyright (c) 2024
+ * @copyright Copyright (c) 2024
  * 
  */
 
@@ -25,9 +25,11 @@ class Componente
         bool estaLigado();
         void desligar();
         virtual bool conectar();
+        bool estaConectado();
         void desconectar();
         int  getValor();
         int getPino();
+        
     
     private:
         bool ligado = false;
