@@ -17,7 +17,7 @@ int main()
   {
     std::cerr << "Falha ao iniciar" << std::endl;
     return 1;
-  
+  }
 
   gpioSetMode(led_pin, PI_OUTPUT);
 
