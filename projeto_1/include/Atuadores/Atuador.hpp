@@ -10,9 +10,7 @@ class Atuador : public Componente
     ~Atuador();
     
     bool conectar();
-    bool setValor(int valor);
-
-
+    virtual bool setValor(int valor);
 };
 
 

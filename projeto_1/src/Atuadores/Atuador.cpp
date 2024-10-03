@@ -23,7 +23,7 @@ bool Atuador::conectar()
 
 bool Atuador::setValor(int valor)
 {
-  if(this->estaLigado() && this->estaConectado())
+  if(this->estaConectado())
   {
     gpioWrite(this->getPino(), valor);
     return true;
