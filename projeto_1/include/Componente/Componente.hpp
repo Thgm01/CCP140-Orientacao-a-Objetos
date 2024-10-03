@@ -31,7 +31,7 @@ class Componente
         int getPino();
         
     
-    private:
+    protected:
         bool ligado = false;
         bool conectado = false;
         int  valor = -1;
