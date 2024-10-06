@@ -12,34 +12,53 @@ Lampada::~Lampada() //Fazer ele desligar quando acabar
 
 bool Lampada::conectar()
 {
-  if(this->estaLigado())
+  if(gpioInitialise() < 0)
   {
-    gpioSetPWMfrequency(this->getPino(), 800); // Define a frequência PWM em 800 Hz
-    this->conectado = true;
-    return true;
+    std::cerr << "Falha ao iniciar" << std::endl;
+    this->conectado = false;
+    return false;
   }
-
-  this->conectado = false;
-  return false;
+  std::cout << "Iniciado com sucesso" << std::endl;
+  
+  gpioSetMode(this->getPino(), PI_OUTPUT);
+  if(gpioSetPWMfrequency(this->getPino(), 800) == 0)
+  {
+    std::cout << "Falha com o PWM" << std::endl;
+    this->conectado = false;
+    return false;
+  }
+  
+  std::cout << "PWM iniciado com sucesso" << std::endl;
+  this->conectado = true;
+  return true;
 }
 
 bool Lampada::setValor(int valor)
 {
-  if(this->estaConectado())
+  if(this->conectado)
   {
     gpioPWM(this->getPino(), valor);
     return true;
   }
   
+  std::cout << "Não está conectado" << std::endl;
   return false;
 }
 
 bool Lampada::setBrilho(int brilho)
 {
-  if(brilho>=0 && brilho<=255)
+  if(brilho > 0 || brilho > 255)
   {
-    if(this->setValor(brilho)) return true;
+    std::cout << "Valor inválido" << std::endl;
+    return false;
   }
-  
-  return false;
+  else if(brilho == 0) this->desligar();
+  else
+  {
+    this->ligar();
+    this->valor = brilho;
+  }
+
+  std::cout << "Definindo pino " << this->getPino() << "com valor " << this->valor;
+  return this->setValor(brilho);
 }
