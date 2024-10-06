@@ -9,7 +9,6 @@
  * 
  */
 
-
 #ifndef COMPONENTE_H
 #define COMPONENTE_H
 
@@ -18,25 +17,35 @@
 class Componente
 {
     public:
+        /**
+         * @brief Classe construtora do Componente
+         * 
+         * Define a seed para numeros randomicos e recebe 
+         * qual o valor do atributo pino.
+         * 
+         * @param pino Qual pino do Raspberry Pi quer usar 
+         */
         Componente(int pino);
         ~Componente();        
 
-        virtual int ligar();
-        bool estaLigado();
-        void desligar();
         virtual bool conectar();
-        bool estaConectado();
         void desconectar();
-        int  getValor();
-        int getPino();
+        virtual int ligar();
+        void desligar();
         
-    
+        //Getters 
+        bool getLigado();
+        bool getConectado();
+        int  getValor();
+        int  getPino();
+        
+    private:
+        int  pino;
+
     protected:
         bool ligado = false;
         bool conectado = false;
         int  valor = -1;
-        int  pino;
-        
         std::string nome;
 };
 

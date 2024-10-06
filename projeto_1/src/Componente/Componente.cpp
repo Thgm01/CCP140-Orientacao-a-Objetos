@@ -16,44 +16,55 @@ Componente::~Componente()
 {
 }
 
-int Componente::ligar()
+bool Componente::conectar()
 {
   if(gpioInitialise() < 0)
   {
     std::cerr << "Falha ao iniciar" << std::endl;
-    this->ligado = false;
-    return -1;
+    this->conectado = false;
+    return false;
   }
 
-  this->ligado = true;
-}
-
-bool Componente::estaLigado()
-{
-  return this->ligado;
-}
-
-void Componente::desligar()
-{
-  this->ligado = false;
-  this->desconectar();
-}
-
-bool Componente::conectar()
-{
-  if(this->ligado)
-  {
-    this->conectado = true;
-    return true;
-  }
-
-  std::cout << "Componente não está ligado ainda" << std::endl;
-  return false;
+  std::cout << "Iniciado com sucesso" << std::endl;
+  this->conectado = true;
+  return true;
 }
 
 void Componente::desconectar()
 {
   this->conectado = false;
+  this->desligar();
+}
+
+int Componente::ligar()
+{
+  if(this->conectado)
+  {
+    this->ligado = true;
+    this->valor = 1;
+    return true;
+  }
+  
+  std::cout << "Componente não está conectado" << std::endl;
+  this->desligar();
+  return false;
+}
+
+void Componente::desligar()
+{
+  this->ligado = false;
+  this->valor = 0;
+}
+
+
+bool Componente::getLigado()
+{
+  return this->ligado;
+}
+
+bool Componente::getConectado()
+{
+  return this->conectado;
 }
 
 int Componente::getValor()
@@ -66,11 +77,3 @@ int Componente::getPino()
 {
   return this->pino;
 }
-
-bool Componente::estaConectado()
-{
-  return this->conectado;
-}
-
-
-
