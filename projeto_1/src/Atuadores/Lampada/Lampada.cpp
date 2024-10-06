@@ -47,7 +47,7 @@ bool Lampada::setValor(int valor)
 
 bool Lampada::setBrilho(int brilho)
 {
-  if(brilho > 0 || brilho > 255)
+  if(brilho < 0 || brilho > 255)
   {
     std::cout << "Valor inválido" << std::endl;
     return false;
@@ -59,6 +59,6 @@ bool Lampada::setBrilho(int brilho)
     this->valor = brilho;
   }
 
-  std::cout << "Definindo pino " << this->getPino() << "com valor " << this->valor;
+  std::cout << "Definindo pino " << this->getPino() << " com valor " << this->valor << std::endl;
   return this->setValor(brilho);
 }

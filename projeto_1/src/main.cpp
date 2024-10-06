@@ -10,14 +10,12 @@ int main()
     std::cout << "Inicio do programa" << std::endl;
 
     Lampada l1 = Lampada(18);
-    l1.ligar();
     l1.conectar();
+    l1.ligar();
 
-    l1.setBrilho(255);
-    usleep(1000000); 
-    l1.setBrilho(10);
-    usleep(1000000); 
-    l1.setBrilho(0);
-    usleep(1000000); 
-
+    for(int i=0; i<255; i++)
+    {
+        l1.setBrilho(i);
+        usleep(1e5); 
+    }
 } 
