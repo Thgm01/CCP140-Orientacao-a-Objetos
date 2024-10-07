@@ -6,7 +6,8 @@
 class Umidificador : public Atuador
 {
   public:
-    bool setConfiguracao(int configuracao);
+    Umidificador(int pino);
+    ~Umidificador();
 };
 
 

@@ -39,7 +39,7 @@ bool Atuador::setValor(int valor)
     }
   
     gpioWrite(this->getPino(), this->valor);
-    std::cout << "Pino " << this->getPino() << "com valor" << this->valor << std::endl;
+    std::cout << "Pino " << this->getPino() << " com valor " << this->valor << std::endl;
     return true;
   }
 
