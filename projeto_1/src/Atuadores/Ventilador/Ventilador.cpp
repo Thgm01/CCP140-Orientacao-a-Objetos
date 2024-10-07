@@ -1,19 +1,19 @@
-#include "Atuadores/Lampada/Lampada.hpp"
+#include "Atuadores/Ventilador/Ventilador.hpp"
 
+#include <iostream>
 #include <pigpio.h>
 
-Lampada::Lampada(int pino) : Atuador(pino)
+Ventilador::Ventilador(int pino) : Atuador(pino)
 {
   this->conectar();
-  this->nome = "Lampada";
 }
 
-Lampada::~Lampada() //Fazer ele desligar quando acabar
+Ventilador::~Ventilador()
 {
-  this->setValor(0);
+  this->setVelocidade(0);
 }
 
-bool Lampada::conectar()
+bool Ventilador::conectar()
 {
   if(gpioInitialise() < 0)
   {
@@ -36,7 +36,7 @@ bool Lampada::conectar()
   return true;
 }
 
-bool Lampada::setValor(int valor)
+bool Ventilador::setValor(int valor)
 {
   if(this->conectado)
   {
@@ -48,20 +48,20 @@ bool Lampada::setValor(int valor)
   return false;
 }
 
-bool Lampada::setBrilho(int brilho)
+bool Ventilador::setVelocidade(int velocidade)
 {
-  if(brilho < 0 || brilho > 255)
+  if(velocidade < 0 || velocidade > 255)
   {
     std::cout << "Valor inválido" << std::endl;
     return false;
   }
-  else if(brilho == 0) this->desligar();
+  else if(velocidade == 0) this->desligar();
   else
   {
     this->ligar();
-    this->valor = brilho;
+    this->valor = velocidade;
   }
 
   std::cout << "Definindo pino " << this->getPino() << " com valor " << this->valor << std::endl;
-  return this->setValor(brilho);
+  return this->setValor(velocidade);
 }
