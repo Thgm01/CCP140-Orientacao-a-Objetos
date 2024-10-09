@@ -26,5 +26,6 @@ void Luminosidade::setLimiarClaridade(int limiar)
 
 bool Luminosidade::estaClaro()
 {
+  this->getValor();
   return this->valor > this->limiarClaridade;
 }

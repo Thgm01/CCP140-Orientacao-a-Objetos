@@ -5,6 +5,7 @@
 #include "Atuadores/Umidificador/Umidificador.hpp"
 #include "Atuadores/Desumidificador/Desumidificador.hpp"
 #include "Sensores/Sensor.hpp"
+#include "Sensores/Luminosidade/Luminosidade.hpp"
 
 #include <iostream>
 #include <unistd.h> // Para a função sleep
@@ -40,16 +41,17 @@ int main()
     //    usleep(1e5);
     //}
     
-    Sensor s1 = Sensor(7);
+    //Sensor s1 = Sensor(7);
+    Luminosidade s1 = Luminosidade(7);
+    s1.setLimiarClaridade(512);
 
+    Lampada l1 = Lampada(18);
     while(1)
     {
-        s1.getValor();
-        usleep(1e5);
-        s1.getValor();
-        usleep(1e5);
-        s1.getValor();
-        usleep(1e5);
+        if(!s1.estaClaro()) l1.setBrilho(255);
+        else l1.setBrilho(0);
+        //std::cout << "está claro? " << s1.estaClaro() << std::endl;
+        usleep(1e6);
     }
 
 } 
