@@ -6,6 +6,8 @@
 #include "Atuadores/Desumidificador/Desumidificador.hpp"
 #include "Sensores/Luminosidade/Luminosidade.hpp"
 #include "Sensores/Temperatura/Temperatura.hpp"
+#include "Sensores/Umidade/Umidade.hpp"
+
 #include <iostream>
 #include <unistd.h> // Para a função sleep
 
@@ -52,10 +54,10 @@ int main()
     //     //std::cout << "está claro? " << s1.estaClaro() << std::endl;
     //     usleep(1e6);
     // }
-    Temperatura t1 = Temperatura(7);
+    Umidade t1 = Umidade(7);
     while(1)
     {
-        std::cout << "temperatura" << t1.getTemperaturaEmC() << std::endl;
+        std::cout << "temperatura" << t1.getUmidadeRelativa() << std::endl;
         usleep(1e6);
     }
     
