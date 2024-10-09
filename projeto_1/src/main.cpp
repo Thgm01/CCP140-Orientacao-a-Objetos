@@ -4,9 +4,8 @@
 #include "Atuadores/Ventilador/Ventilador.hpp"
 #include "Atuadores/Umidificador/Umidificador.hpp"
 #include "Atuadores/Desumidificador/Desumidificador.hpp"
-#include "Sensores/Sensor.hpp"
 #include "Sensores/Luminosidade/Luminosidade.hpp"
-
+#include "Sensores/Temperatura/Temperatura.hpp"
 #include <iostream>
 #include <unistd.h> // Para a função sleep
 
@@ -42,16 +41,22 @@ int main()
     //}
     
     //Sensor s1 = Sensor(7);
-    Luminosidade s1 = Luminosidade(7);
-    s1.setLimiarClaridade(512);
-
-    Lampada l1 = Lampada(18);
+    // Luminosidade s1 = Luminosidade(7);
+    // s1.setLimiarClaridade(512);
+    //
+    // Lampada l1 = Lampada(18);
+    // while(1)
+    // {
+    //     if(!s1.estaClaro()) l1.setBrilho(255);
+    //     else l1.setBrilho(0);
+    //     //std::cout << "está claro? " << s1.estaClaro() << std::endl;
+    //     usleep(1e6);
+    // }
+    Temperatura t1 = Temperatura(7);
     while(1)
     {
-        if(!s1.estaClaro()) l1.setBrilho(255);
-        else l1.setBrilho(0);
-        //std::cout << "está claro? " << s1.estaClaro() << std::endl;
+        std::cout << "temperatura" << t1.getTemperaturaEmC() << std::endl;
         usleep(1e6);
     }
-
+    
 } 
