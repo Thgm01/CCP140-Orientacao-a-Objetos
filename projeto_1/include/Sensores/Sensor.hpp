@@ -10,6 +10,9 @@ class Sensor : public Componente {
 
     bool conectar();
     bool getValor();
+
+  private:
+    int readAdc();
 };
 
 #endif 

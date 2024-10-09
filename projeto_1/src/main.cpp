@@ -4,6 +4,7 @@
 #include "Atuadores/Ventilador/Ventilador.hpp"
 #include "Atuadores/Umidificador/Umidificador.hpp"
 #include "Atuadores/Desumidificador/Desumidificador.hpp"
+#include "Sensores/Sensor.hpp"
 
 #include <iostream>
 #include <unistd.h> // Para a função sleep
@@ -39,14 +40,16 @@ int main()
     //    usleep(1e5);
     //}
     
-    Desumidificador u1 = Desumidificador(18);
+    Sensor s1 = Sensor(7);
 
-    u1.setValor(1);
-    usleep(1e6);
+    while(1)
+    {
+        s1.getValor();
+        usleep(1e5);
+        s1.getValor();
+        usleep(1e5);
+        s1.getValor();
+        usleep(1e5);
+    }
 
-    u1.setValor(0);
-    usleep(1e6);
-
-    u1.setValor(1);
-    usleep(1e6);
 } 
