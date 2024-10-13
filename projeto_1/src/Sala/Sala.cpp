@@ -10,7 +10,7 @@
 #include "Sensores/Temperatura/Temperatura.hpp"
 #include "Sensores/Umidade/Umidade.hpp"
 
-Sala::Sala(int limiarClaridade, int mediaUmidade=55, int thUmidade=10)
+Sala::Sala(int limiarClaridade, int mediaUmidade, int thUmidade)
 {
   atuadores.push_back(new Lampada(10));
   atuadores.push_back(new Umidificador(18));
@@ -25,6 +25,10 @@ Sala::Sala(int limiarClaridade, int mediaUmidade=55, int thUmidade=10)
   
   this->mediaUmidade = mediaUmidade;
   this->thUmidade = thUmidade;
+
+  ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+  ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+  
 }
 
 Sala::~Sala()
@@ -44,15 +48,19 @@ void Sala::atualiza()
   else ((Lampada *)atuadores[LAMPADA])->setBrilho(0); 
 
   // Controle da Umidade
+  int umidade = ((Umidade *)sensores[UMIDADE])->getUmidadeRelativa();
+  std::cout << "Umidade " << umidade << std::endl;
   if(this->ajustando)
   {
-    if(((Umidade *)sensores[UMIDADE])->getUmidadeRelativa() > this->mediaUmidade+3)
+    if(umidade > this->mediaUmidade+3)
     {
       ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(1);
+      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
     }
-    else if(((Umidade *)sensores[UMIDADE])->getUmidadeRelativa() < this->mediaUmidade+3)
+    else if(umidade < this->mediaUmidade-3)
     {
       ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(1);
+      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
     }
     else
     {
@@ -63,12 +71,12 @@ void Sala::atualiza()
   }
   else
   {
-    if(((Umidade *)sensores[UMIDADE])->getUmidadeRelativa() > this->mediaUmidade+this->thUmidade ||
-       ((Umidade *)sensores[UMIDADE])->getUmidadeRelativa() < this->mediaUmidade-this->thUmidade)
+    if(umidade > this->mediaUmidade+this->thUmidade ||
+       umidade < this->mediaUmidade-this->thUmidade)
     {
+      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
       this->ajustando = true;
     }
   }
-
-
 }
