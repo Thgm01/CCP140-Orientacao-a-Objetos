@@ -29,3 +29,8 @@ bool Luminosidade::estaClaro()
   this->getValor();
   return this->valor > this->limiarClaridade;
 }
+
+int Luminosidade::getLimiar()
+{
+  return this->limiarClaridade;
+}

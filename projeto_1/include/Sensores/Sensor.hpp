@@ -9,7 +9,7 @@ class Sensor : public Componente {
     ~Sensor();
 
     bool conectar();
-    bool getValor();
+    int getValor();
 
   private:
     int readAdc();

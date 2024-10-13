@@ -9,7 +9,7 @@
 class Sala
 {
   public:
-    Sala();
+    Sala(int limiarClaridade);
     ~Sala();
 
     void atualiza();

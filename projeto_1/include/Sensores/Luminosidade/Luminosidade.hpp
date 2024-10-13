@@ -13,6 +13,7 @@ class Luminosidade : public Sensor
 
     void setLimiarClaridade(int limiar);
     bool estaClaro();
+    int getLimiar();
 
   private:
     int limiarClaridade;

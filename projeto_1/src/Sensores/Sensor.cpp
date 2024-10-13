@@ -32,11 +32,11 @@ bool Sensor::conectar()
   return true;
 }
 
-bool Sensor::getValor()
+int Sensor::getValor()
 {
   int adcValue = this->readAdc();
   this->valor = adcValue;
-  std::cout << "valor lido: " << this->valor << std::endl;
+  return this->valor;
 }
 
 int Sensor::readAdc()

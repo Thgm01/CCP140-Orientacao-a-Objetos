@@ -8,6 +8,8 @@
 #include "Sensores/Temperatura/Temperatura.hpp"
 #include "Sensores/Umidade/Umidade.hpp"
 
+#include "Sala/Sala.hpp"
+
 #include <iostream>
 #include <unistd.h> // Para a função sleep
 
@@ -54,11 +56,12 @@ int main()
     //     //std::cout << "está claro? " << s1.estaClaro() << std::endl;
     //     usleep(1e6);
     // }
-    Umidade t1 = Umidade(7);
+    Sala s1 = Sala(200);
     while(1)
     {
-        std::cout << "temperatura" << t1.getUmidadeRelativa() << std::endl;
-        usleep(1e6);
+        // std::cout << "temperatura" << t1.getUmidadeRelativa() << std::endl;
+        s1.atualiza();
+        usleep(1e5);
     }
     
 } 
