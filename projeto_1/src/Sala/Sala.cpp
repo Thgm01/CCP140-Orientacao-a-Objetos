@@ -13,10 +13,10 @@
 Sala::Sala(int limiarClaridade, int mediaUmidade, int thUmidade,
            int temperaturaDesejada, int thTemperatura, char escalaTemp)
 {
-  atuadores.push_back(new Lampada(10));
-  atuadores.push_back(new Umidificador(18));
-  atuadores.push_back(new Desumidificador(15));
-  atuadores.push_back(new Ventilador(12));
+  atuadores.push_back(new Lampada(12));
+  atuadores.push_back(new Umidificador(16));
+  atuadores.push_back(new Desumidificador(26));
+  atuadores.push_back(new Ventilador(18));
 
   sensores.push_back(new Luminosidade(7));
   sensores.push_back(new Umidade(6));
@@ -40,49 +40,49 @@ Sala::~Sala()
 
 void Sala::atualiza()
 {
-  // // Controle da luz
-  // if(((Luminosidade *)sensores[LUMINOSIDADE])->estaClaro())
-  // {
-  //   int limiar = ((Luminosidade *)sensores[LUMINOSIDADE])->getLimiar();
-  //   int valorLido = ((Luminosidade *)sensores[LUMINOSIDADE])->getValor();
-  //   int brilho = int(255.0/(1023 - limiar) * (valorLido - limiar));
-  //   ((Lampada *)atuadores[LAMPADA])->setBrilho(brilho);
-  // }
-  // else ((Lampada *)atuadores[LAMPADA])->setBrilho(0); 
-  //
-  // // Controle da Umidade
-  // int umidade = ((Umidade *)sensores[UMIDADE])->getUmidadeRelativa();
-  // std::cout << "Umidade " << umidade << std::endl;
-  // if(this->ajustandoUmidade)
-  // {
-  //   if(umidade > this->mediaUmidade+3)
-  //   {
-  //     ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(1);
-  //     ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
-  //   }
-  //   else if(umidade < this->mediaUmidade-3)
-  //   {
-  //     ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(1);
-  //     ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
-  //   }
-  //   else
-  //   {
-  //     ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
-  //     ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
-  //     this->ajustandoUmidade = false;
-  //   } 
-  // }
-  // else
-  // {
-  //   if(umidade > this->mediaUmidade+this->thUmidade ||
-  //      umidade < this->mediaUmidade-this->thUmidade)
-  //   {
-  //     ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
-  //     ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
-  //     this->ajustandoUmidade = true;
-  //   }
-  // }
-  //
+  // Controle da luz
+  if(((Luminosidade *)sensores[LUMINOSIDADE])->estaClaro())
+  {
+    int limiar = ((Luminosidade *)sensores[LUMINOSIDADE])->getLimiar();
+    int valorLido = ((Luminosidade *)sensores[LUMINOSIDADE])->getValor();
+    int brilho = int(255.0/(1023 - limiar) * (valorLido - limiar));
+    ((Lampada *)atuadores[LAMPADA])->setBrilho(brilho);
+  }
+  else ((Lampada *)atuadores[LAMPADA])->setBrilho(0); 
+
+  // Controle da Umidade
+  int umidade = ((Umidade *)sensores[UMIDADE])->getUmidadeRelativa();
+  std::cout << "Umidade " << umidade << std::endl;
+  if(this->ajustandoUmidade)
+  {
+    if(umidade > this->mediaUmidade+3)
+    {
+      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(1);
+      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+    }
+    else if(umidade < this->mediaUmidade-3)
+    {
+      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(1);
+      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+    }
+    else
+    {
+      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+      this->ajustandoUmidade = false;
+    } 
+  }
+  else
+  {
+    if(umidade > this->mediaUmidade+this->thUmidade ||
+       umidade < this->mediaUmidade-this->thUmidade)
+    {
+      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+      this->ajustandoUmidade = true;
+    }
+  }
+
   // Controle de Temperatura
   int temp;
   int maxTemp;
@@ -102,6 +102,7 @@ void Sala::atualiza()
       maxTemp = 122;
       break;
   }
+  std::cout << "Temperatura: " << temp << std::endl;
 
   if(this->ajustandoTemperatura)
   {

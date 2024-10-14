@@ -48,9 +48,9 @@ int Sensor::readAdc()
 
   uint8_t tx[3], rx[3];
 
-  tx[0] = 1;  // Start bit
-  tx[1] = (8 + this->getPino()) << 4;  // Configurar para o canal (shift para alinhar)
-  tx[2] = 0; // Dummy byte para receber resposta
+  tx[0] = 1;  
+  tx[1] = (8 + this->getPino()) << 4;  
+  tx[2] = 0; 
 
   spiXfer(0, (char*)tx, (char*)rx, 3);
 
