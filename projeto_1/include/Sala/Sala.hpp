@@ -9,7 +9,8 @@
 class Sala
 {
   public:
-    Sala(int limiarClaridade, int mediaUmidade, int thUmidade);
+    Sala(int limiarClaridade, int mediaUmidade, int thUmidade,
+         int temperaturaDesejada, int thTemperatura, char escalaTemp);
     ~Sala();
 
     void atualiza();
@@ -18,9 +19,15 @@ class Sala
     std::vector<Atuador*> atuadores;
     std::vector<Sensor*> sensores;
 
-    bool ajustando = false;
+    bool ajustandoUmidade = false;
     int mediaUmidade;
     int thUmidade;
+    
+    bool ajustandoTemperatura = false;
+    int temperaturaDesejada;
+    int thTemperatura;
+    char escalaTemp;
+    
 };
 
 #endif  

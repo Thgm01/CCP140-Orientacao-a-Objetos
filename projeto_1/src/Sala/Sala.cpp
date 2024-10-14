@@ -10,7 +10,8 @@
 #include "Sensores/Temperatura/Temperatura.hpp"
 #include "Sensores/Umidade/Umidade.hpp"
 
-Sala::Sala(int limiarClaridade, int mediaUmidade, int thUmidade)
+Sala::Sala(int limiarClaridade, int mediaUmidade, int thUmidade,
+           int temperaturaDesejada, int thTemperatura, char escalaTemp)
 {
   atuadores.push_back(new Lampada(10));
   atuadores.push_back(new Umidificador(18));
@@ -25,10 +26,12 @@ Sala::Sala(int limiarClaridade, int mediaUmidade, int thUmidade)
   
   this->mediaUmidade = mediaUmidade;
   this->thUmidade = thUmidade;
+  this->temperaturaDesejada = temperaturaDesejada;
+  this->thUmidade = thUmidade;
+  this->escalaTemp = escalaTemp;
 
   ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
   ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
-  
 }
 
 Sala::~Sala()
@@ -76,7 +79,45 @@ void Sala::atualiza()
     {
       ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
       ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
-      this->ajustando = true;
+      this->ajustandoUmidade = true;
     }
   }
+
+  // Controle de Temperatura
+  int temp;
+  switch (this->escalaTemp) {
+    case 'c':
+      temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmC();
+      break;
+
+    case 'f':
+      temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmF();
+      break;
+
+    case 'k':
+      temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmK();
+      break;
+  }
+
+  if(this->ajustandoTemperatura)
+  {
+    
+    if(this->temperaturaDesejada > temp)
+    {
+      ((Ventilador *)atuadores[VENTILADOR])->setVelocidade(255);
+    }
+    else
+    {
+      ((Ventilador *)atuadores[VENTILADOR])->setVelocidade(0);
+      this->ajustandoTemperatura = false;
+    }
+  }
+  else
+  {
+    if(temp > this->temperaturaDesejada+this->thTemperatura)
+    {
+      this->ajustandoTemperatura = true; 
+    }
+  }
+
 }
