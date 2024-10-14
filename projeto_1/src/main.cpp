@@ -56,12 +56,11 @@ int main()
     //     //std::cout << "está claro? " << s1.estaClaro() << std::endl;
     //     usleep(1e6);
     // }
-    Sala s1 = Sala(200, 55, 10);
+    Sala s1 = Sala(200, 55, 10, 25, 5, 'c');
     while(1)
     {
         // std::cout << "temperatura" << t1.getUmidadeRelativa() << std::endl;
         s1.atualiza();
         usleep(1e5);
-    }
-    
-} 
+    } 
+}
