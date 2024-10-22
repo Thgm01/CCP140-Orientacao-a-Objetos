@@ -28,6 +28,7 @@ class Sala
     int thTemperatura;
     char escalaTemp;
     
+    int horaAtivacao;
 };
 
 #endif  

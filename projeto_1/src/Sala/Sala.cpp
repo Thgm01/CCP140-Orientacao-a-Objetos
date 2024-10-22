@@ -46,7 +46,7 @@ void Sala::atualiza()
 {
   std::time_t now = std::time(nullptr);
   std::tm* horaAtual = std::localtime(&now); 
-  
+  std::cout << horaAtual->tm_hour << std::endl;  
   if(horaAtual->tm_hour > this->horaAtivacao)
   {
     // Controle da luz
