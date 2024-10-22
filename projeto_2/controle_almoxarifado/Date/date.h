@@ -1,5 +1,5 @@
-#ifndef DATA_H
-#define DATA_H
+#ifndef DATE_H
+#define DATE_H
 
 #include <ctime>
 #include <array>
@@ -15,14 +15,14 @@ public:
     int getDay();
     int getMonth();
     int getYear();
-    
-    bool setDate(const int &day,const int &month, const int &year);
-    void setTodayDate();
+
     bool setDay(const int &day);
     bool setMonth(const int &month);
-    bool setYear(const int &year);
+    bool setYear(const int &year);   
+    bool setDate(const int &day,const int &month, const int &year);
+    void setTodayDate();
 
-    bool isBefore(const Date &date);
+    bool isOlder(const Date &date);
     int diffYears(const Date &date);
 
 private:
@@ -35,4 +35,4 @@ private:
     bool isLeapYear(const int &year);
 };
 
-#endif // DATA_H
+#endif // DATE_H

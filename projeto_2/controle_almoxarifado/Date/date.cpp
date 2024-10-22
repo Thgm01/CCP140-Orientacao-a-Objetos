@@ -1,5 +1,7 @@
 #include "date.h"
 
+#include <cmath>
+
 Date::Date()
 {
     setTodayDate();
@@ -131,7 +133,7 @@ bool Date::setYear(const int &year)
 // | |_| | |_| | | |  __/ |  \__ \
 //  \___/ \__|_| |_|\___|_|  |___/
 
-bool Date::isBefore(const Date& date)
+bool Date::isOlder(const Date& date)
 {
     if(this->year == date.year)
     {
@@ -141,7 +143,7 @@ bool Date::isBefore(const Date& date)
     else return this->year < date.year;
 }
 
-int Date::diffYears(const Date &date)
+int Date::diffYears(const Date &date) // Doesn't work in some cases
 {
     int years = date.year - this->year;
 
