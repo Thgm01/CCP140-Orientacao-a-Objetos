@@ -46,18 +46,20 @@ void Sala::atualiza()
 {
   std::time_t now = std::time(nullptr);
   std::tm* horaAtual = std::localtime(&now); 
-  std::cout << horaAtual->tm_hour << std::endl;  
   if(horaAtual->tm_hour > this->horaAtivacao)
   {
     // Controle da luz
     if(((Luminosidade *)sensores[LUMINOSIDADE])->estaClaro())
+    {
+      ((Lampada *)atuadores[LAMPADA])->setBrilho(0); 
+    }
+    else
     {
       int limiar = ((Luminosidade *)sensores[LUMINOSIDADE])->getLimiar();
       int valorLido = ((Luminosidade *)sensores[LUMINOSIDADE])->getValor();
       int brilho = int(255.0/(1023 - limiar) * (valorLido - limiar));
       ((Lampada *)atuadores[LAMPADA])->setBrilho(brilho);
     }
-    else ((Lampada *)atuadores[LAMPADA])->setBrilho(0); 
 
     // Controle da Umidade
     int umidade = ((Umidade *)sensores[UMIDADE])->getUmidadeRelativa();
