@@ -10,7 +10,7 @@ class Sala
 {
   public:
     Sala(int limiarClaridade, int mediaUmidade, int thUmidade,
-         int temperaturaDesejada, int thTemperatura, char escalaTemp);
+         int temperaturaDesejada, int thTemperatura, char escalaTemp, int horaAtivacao);
     ~Sala();
 
     void atualiza();

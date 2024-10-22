@@ -10,8 +10,10 @@
 #include "Sensores/Temperatura/Temperatura.hpp"
 #include "Sensores/Umidade/Umidade.hpp"
 
+#include <ctime>
+
 Sala::Sala(int limiarClaridade, int mediaUmidade, int thUmidade,
-           int temperaturaDesejada, int thTemperatura, char escalaTemp)
+           int temperaturaDesejada, int thTemperatura, char escalaTemp, int horaAtivacao)
 {
   atuadores.push_back(new Lampada(12));
   atuadores.push_back(new Umidificador(16));
@@ -32,6 +34,8 @@ Sala::Sala(int limiarClaridade, int mediaUmidade, int thUmidade,
 
   ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
   ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+
+  this->horaAtivacao = horaAtivacao;
 }
 
 Sala::~Sala()
@@ -40,90 +44,95 @@ Sala::~Sala()
 
 void Sala::atualiza()
 {
-  // Controle da luz
-  if(((Luminosidade *)sensores[LUMINOSIDADE])->estaClaro())
+  std::time_t now = std::time(nullptr);
+  std::tm* horaAtual = std::localtime(&now); 
+  
+  if(horaAtual->tm_hour > this->horaAtivacao)
   {
-    int limiar = ((Luminosidade *)sensores[LUMINOSIDADE])->getLimiar();
-    int valorLido = ((Luminosidade *)sensores[LUMINOSIDADE])->getValor();
-    int brilho = int(255.0/(1023 - limiar) * (valorLido - limiar));
-    ((Lampada *)atuadores[LAMPADA])->setBrilho(brilho);
-  }
-  else ((Lampada *)atuadores[LAMPADA])->setBrilho(0); 
-
-  // Controle da Umidade
-  int umidade = ((Umidade *)sensores[UMIDADE])->getUmidadeRelativa();
-  std::cout << "Umidade " << umidade << std::endl;
-  if(this->ajustandoUmidade)
-  {
-    if(umidade > this->mediaUmidade+3)
+    // Controle da luz
+    if(((Luminosidade *)sensores[LUMINOSIDADE])->estaClaro())
     {
-      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(1);
-      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+      int limiar = ((Luminosidade *)sensores[LUMINOSIDADE])->getLimiar();
+      int valorLido = ((Luminosidade *)sensores[LUMINOSIDADE])->getValor();
+      int brilho = int(255.0/(1023 - limiar) * (valorLido - limiar));
+      ((Lampada *)atuadores[LAMPADA])->setBrilho(brilho);
     }
-    else if(umidade < this->mediaUmidade-3)
+    else ((Lampada *)atuadores[LAMPADA])->setBrilho(0); 
+
+    // Controle da Umidade
+    int umidade = ((Umidade *)sensores[UMIDADE])->getUmidadeRelativa();
+    std::cout << "Umidade " << umidade << std::endl;
+    if(this->ajustandoUmidade)
     {
-      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(1);
-      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+      if(umidade > this->mediaUmidade+3)
+      {
+        ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(1);
+        ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+      }
+      else if(umidade < this->mediaUmidade-3)
+      {
+        ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(1);
+        ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+      }
+      else
+      {
+        ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+        ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+        this->ajustandoUmidade = false;
+      } 
     }
     else
     {
-      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
-      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
-      this->ajustandoUmidade = false;
-    } 
-  }
-  else
-  {
-    if(umidade > this->mediaUmidade+this->thUmidade ||
-       umidade < this->mediaUmidade-this->thUmidade)
-    {
-      ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
-      ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
-      this->ajustandoUmidade = true;
+      if(umidade > this->mediaUmidade+this->thUmidade ||
+        umidade < this->mediaUmidade-this->thUmidade)
+      {
+        ((Desumidificador *)atuadores[DESUMIDIFICADOR])->setValor(0);
+        ((Umidificador *)atuadores[UMIDIFICADOR])->setValor(0);
+        this->ajustandoUmidade = true;
+      }
     }
-  }
 
-  // Controle de Temperatura
-  int temp;
-  int maxTemp;
-  switch (this->escalaTemp) {
-    case 'c':
-      temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmC();
-      maxTemp = 50;
-      break;
+    // Controle de Temperatura
+    int temp;
+    int maxTemp;
+    switch (this->escalaTemp) {
+      case 'c':
+        temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmC();
+        maxTemp = 50;
+        break;
 
-    case 'f':
-      temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmF();
-      maxTemp = 50 + 273;
-      break;
+      case 'f':
+        temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmF();
+        maxTemp = 50 + 273;
+        break;
 
-    case 'k':
-      temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmK();
-      maxTemp = 122;
-      break;
-  }
-  std::cout << "Temperatura: " << temp << std::endl;
+      case 'k':
+        temp = ((Temperatura *)sensores[TEMPERATURA])->getTemperaturaEmK();
+        maxTemp = 122;
+        break;
+    }
+    std::cout << "Temperatura: " << temp << std::endl;
 
-  if(this->ajustandoTemperatura)
-  {
-    
-    if(this->temperaturaDesejada < temp)
+    if(this->ajustandoTemperatura)
     {
-      int velocidade = int(255.0 / (maxTemp - this->temperaturaDesejada) * (temp - this->temperaturaDesejada));
-      ((Ventilador *)atuadores[VENTILADOR])->setVelocidade(velocidade);
+      
+      if(this->temperaturaDesejada < temp)
+      {
+        int velocidade = int(255.0 / (maxTemp - this->temperaturaDesejada) * (temp - this->temperaturaDesejada));
+        ((Ventilador *)atuadores[VENTILADOR])->setVelocidade(velocidade);
+      }
+      else
+      {
+        ((Ventilador *)atuadores[VENTILADOR])->setVelocidade(0);
+        this->ajustandoTemperatura = false;
+      }
     }
     else
     {
-      ((Ventilador *)atuadores[VENTILADOR])->setVelocidade(0);
-      this->ajustandoTemperatura = false;
+      if(temp > this->temperaturaDesejada+this->thTemperatura)
+      {
+        this->ajustandoTemperatura = true; 
+      }
     }
   }
-  else
-  {
-    if(temp > this->temperaturaDesejada+this->thTemperatura)
-    {
-      this->ajustandoTemperatura = true; 
-    }
-  }
-
 }
