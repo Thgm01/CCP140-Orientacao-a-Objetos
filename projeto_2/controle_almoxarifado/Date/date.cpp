@@ -14,7 +14,7 @@ Date::Date(int day, int month, int year)
 //   ____      _   _                
 //  / ___| ___| |_| |_ ___ _ __ ___ 
 // | |  _ / _ \ __| __/ _ \ '__/ __|
-// | |_| |  __/ |_| ||  __/ |  \__ \  
+// | |_| |  __/ |_| ||  __/ |  \__ \
 //  \____|\___|\__|\__\___|_|  |___/
 
 std::array<int, 3> Date::getDate()
@@ -44,11 +44,25 @@ int Date::getYear()
 //  ___) |  __/ |_| ||  __/ |  \__ \
 // |____/ \___|\__|\__\___|_|  |___/
 
-void Date::setDate(const int &day, const int &month, const int &year)
+bool Date::setDate(const int &day, const int &month, const int &year)
 {
-    this->setDay(day);
-    this->setMonth(month);
-    this->setYear(year);
+    int oldDay = this->day;
+    int oldMonth = this->month;
+    int oldYear = this->year;
+    
+    bool error = false;
+
+    if(!this->setYear(year)) error = true;
+    else if(!this->setMonth(month)) error = true;
+    else if(!this->setDay(day)) error = true;
+    
+    if(!error) return true;
+
+    // if have any issue to set date revert don't aply the changes
+    this->setYear(oldYear);
+    this->setMonth(oldMonth);
+    this->setDay(oldDay);
+    return false;
 }
 
 void Date::setTodayDate()
@@ -61,35 +75,54 @@ void Date::setTodayDate()
     this->year = datetime.tm_year + 1900;
 }
 
-void Date::setDay(const int &day)
+bool Date::setDay(const int &day)
 {
     bool erro = false;
 
     this->monthDays[1] = isLeapYear(this->year) ? 29 : 28;
 
-    if(day<1) erro = true;
-    else if(day > monthDays[this->month-1]) erro = true;
+    if(day<1)
+    {
+        std::cout << "Invalid day: day<1." << std::endl;
+        return false;
+    }
+    else if(day > monthDays[this->month-1])
+    {
+        std::cout << "Invalid day: the month " << this->month << " has less days." << std::endl; 
+        return false;
+    }
 
-    if(!erro) this->day = day;
-    else std::cout << "Invalid day" << std::endl;
+    this->day = day;
+    return true;
 }
 
-void Date::setMonth(const int &month)
+bool Date::setMonth(const int &month)
 {
-    bool erro = false;
+    if(month < 1 || month > 12) 
+    {
+        std::cout << "Invalid month: It isn't a real month" << std::endl;
+        return false;
+    }
+    else if(this->day > monthDays[month-1])
+    {
+        std::cout << "Invalid month: the month " << this->month << " has less days."<< std::endl;
+        return false;
+    }
 
-    if(month < 1 || month > 12) erro = true;
-    else if(this->day > monthDays[month-1]) erro = true;
-
-    if(!erro) this->month = month;
-    else std::cout << "Invalid Month" << std::endl;
-
+    this->month = month;
+    return true;
 }
 
-void Date::setYear(const int &year)
+bool Date::setYear(const int &year)
 {
-    if(year > 0) this->year = year;
-    else std::cout << "Invalid Year" << std::endl;
+    if(year < 1900)
+    {
+        std::cout << "Invalid year: too old";
+        return false;
+    }
+
+    this->year = year;
+    return true;
 }
 
 //   ___  _   _                   

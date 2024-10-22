@@ -16,19 +16,19 @@ public:
     int getMonth();
     int getYear();
     
-    void setDate(const int &day,const int &month, const int &year);
+    bool setDate(const int &day,const int &month, const int &year);
     void setTodayDate();
-    void setDay(const int &day);
-    void setMonth(const int &month);
-    void setYear(const int &year);
+    bool setDay(const int &day);
+    bool setMonth(const int &month);
+    bool setYear(const int &year);
 
     bool isBefore(const Date &date);
     int diffYears(const Date &date);
 
 private:
-    int day;
-    int month;
-    int year;
+    int day = 1;
+    int month = 1;
+    int year = 2000;
 
     int monthDays[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
