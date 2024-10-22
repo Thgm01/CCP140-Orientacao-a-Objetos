@@ -57,6 +57,7 @@ void Sala::atualiza()
     {
       int limiar = ((Luminosidade *)sensores[LUMINOSIDADE])->getLimiar();
       int valorLido = ((Luminosidade *)sensores[LUMINOSIDADE])->getValor();
+      std::cout << "Luminosidade " << valorLido << std::endl;
       int brilho = int(255.0/(1023 - limiar) * (valorLido - limiar));
       ((Lampada *)atuadores[LAMPADA])->setBrilho(brilho);
     }
@@ -137,4 +138,5 @@ void Sala::atualiza()
       }
     }
   }
+  std::cout << std::endl;
 }
