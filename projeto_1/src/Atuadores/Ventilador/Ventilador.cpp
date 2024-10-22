@@ -62,6 +62,6 @@ bool Ventilador::setVelocidade(int velocidade)
     this->valor = velocidade;
   }
 
-  std::cout << "Definindo pino " << this->getPino() << " com valor " << this->valor << std::endl;
+  // std::cout << "Definindo pino " << this->getPino() << " com valor " << this->valor << std::endl;
   return this->setValor(velocidade);
 }

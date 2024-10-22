@@ -62,6 +62,6 @@ bool Lampada::setBrilho(int brilho)
     this->valor = brilho;
   }
 
-  std::cout << "Definindo pino " << this->getPino() << " com valor " << this->valor << std::endl;
+  // std::cout << "Definindo pino " << this->getPino() << " com valor " << this->valor << std::endl;
   return this->setValor(brilho);
 }
