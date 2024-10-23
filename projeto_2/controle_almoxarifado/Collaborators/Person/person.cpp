@@ -69,9 +69,18 @@ void Person::setName(std::string name)
     this->name = name;
 }
 
-void Person::setBirthdayDate(Date birthdayDate) //fazer validação de data
+void Person::setBirthdayDate(const Date &birthdayDate)
 {
-    this->birthdayDate = birthdayDate;
+
+    if(Date().isOlder(birthdayDate))
+    {
+        std::cout << "Invalid date, using today date!" << std::endl;
+        this->birthdayDate = Date();
+    }
+    else
+    {
+        this->birthdayDate = birthdayDate;
+    }
 }
 
 void Person::setGender(char gender) //Ver de colocar uma verificação

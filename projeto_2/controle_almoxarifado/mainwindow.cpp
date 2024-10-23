@@ -43,6 +43,15 @@ void MainWindow::on_btnCadastrarAluno_clicked()
     std::cout << data.getMonth() << std::endl;
     std::cout << data.getYear() << std::endl;
 
+    Date data2 = Date(22, 10, 2024);
+
+    for(int i : data2.getDate())
+    {
+        std::cout << i << std::endl;
+    }
+
+    std::cout << data2.setYear(1920) << std::endl;
+    std::cout << data2.getYear() << std::endl;
 }
 
 //Student *MainWindow::recebeInfoAluno()

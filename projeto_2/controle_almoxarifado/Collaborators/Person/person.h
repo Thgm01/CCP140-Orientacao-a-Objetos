@@ -26,7 +26,7 @@ public:
          * @param birthdayDate
          * @param gender
          */
-        Person(std::string name, Date birthdayDate, char gender);
+        Person(std::string name, Date birthdayDate, char gender, std::string phone, std::string email);
         
         
         //   ____      _   _                
@@ -96,7 +96,7 @@ public:
          *
          * @param birthdayDate new person birthday date
          */
-        void setBirthdayDate(Date birthdayDate);
+        void setBirthdayDate(const Date &birthdayDate);
 
         /**
          * @brief Edit person gender

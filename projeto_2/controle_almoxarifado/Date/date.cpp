@@ -79,8 +79,6 @@ void Date::setTodayDate()
 
 bool Date::setDay(const int &day)
 {
-    bool erro = false;
-
     this->monthDays[1] = isLeapYear(this->year) ? 29 : 28;
 
     if(day<1)
@@ -143,12 +141,14 @@ bool Date::isOlder(const Date& date)
     else return this->year < date.year;
 }
 
-int Date::diffYears(const Date &date) // Doesn't work in some cases
+int Date::diffYears(const Date &date)
 {
     int years = date.year - this->year;
 
     if(this->month > date.month) years -= 1;
-    else if(this->month == date.month && this->day > date.month) years -= 1;
+    else if(this->month == date.month && this->day > date.day) years -= 1;
+
+    if(years < 0) years = (years * -1) - 1 ;
 
     return years;
 }
