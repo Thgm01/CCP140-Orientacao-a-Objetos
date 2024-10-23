@@ -31,20 +31,19 @@ std::string Person::getGender()
     switch (this->gender)
     {
     case 'm':
-        return "Masculino";
+        return "Male";
 
     case 'f':
-        return "Feminino";
+        return "Female";
 
     default:
-        return "Não Especificado";
+        return "Undefined";
     };
 }
 
 int Person::getAge()
 {
-    Date today = Date();
-    int age = today.diffYears(Date());
+    int age = Date().diffYears(this->birthdayDate);
     return age;
 }
 
@@ -77,15 +76,21 @@ void Person::setBirthdayDate(const Date &birthdayDate)
         std::cout << "Invalid date, using today date!" << std::endl;
         this->birthdayDate = Date();
     }
-    else
-    {
-        this->birthdayDate = birthdayDate;
-    }
+    else this->birthdayDate = birthdayDate;
 }
 
-void Person::setGender(char gender) //Ver de colocar uma verificação
+void Person::setGender(char gender)
 {
-    this->gender = gender;
+    switch (gender) {
+    case 'm':
+    case 'f':
+        this->gender = gender;
+        break;
+    default:
+        this->gender = 'u';
+        std::cout << "Undefined gender" << std::endl;
+        break;
+    }
 }
 
 void Person::setPhone(std::string phone)
