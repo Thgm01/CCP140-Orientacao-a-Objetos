@@ -1,4 +1,4 @@
-enum class Curso
+enum class Course
 {
     EngenhariaDeAutomacao,
     EngenhariaEletrica,

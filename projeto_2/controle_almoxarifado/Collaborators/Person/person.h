@@ -1,17 +1,19 @@
 /**
- * @file pessoa.h
- * @author Thiago M.
- * @brief Classe base para criar um objeto de uma pessoa
+ * @file person.h
+ * @author Thiago M. (thiago.tmoura01@gmail.com)
+ * @brief Base class for a student object
+ * @date 2024-8-10
  */
 
-#ifndef PESSOA_H
-#define PESSOA_H
+#ifndef PERSON_H
+#define PERSON_H
 
 #include <string>
+#include <array>
 #include "Date/date.h"
 
 /**
- * @brief Classe que representa uma pessoa (aluno ou funcionário)
+ * @brief Class that represents a person (student or employee)
  * 
  */
 
@@ -27,14 +29,14 @@ public:
          * @param gender
          */
         Person(std::string name, Date birthdayDate, char gender, std::string phone, std::string email);
-        
-        
+
+
         //   ____      _   _                
         //  / ___| ___| |_| |_ ___ _ __ ___ 
         // | |  _ / _ \ __| __/ _ \ '__/ __|
         // | |_| |  __/ |_| ||  __/ |  \__ \ 
         //  \____|\___|\__|\__\___|_|  |___/
-        
+
         /**
          * @brief
          * 
@@ -127,4 +129,4 @@ private:
         std::string email;
 };
 
-#endif // PESSOA_H
+#endif // PERSON_H
