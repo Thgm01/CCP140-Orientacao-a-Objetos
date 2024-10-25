@@ -90,6 +90,38 @@ public:
     //  ___) |  __/ |_| ||  __/ |  \__ \
     // |____/ \___|\__|\__\___|_|  |___/
 
+
+    void getRegistrationNum(std::string registrationNum) // ver de fazer verificação
+    {
+        this->registrationNum = registrationNum;
+    }
+
+    void setCourse(Course course)
+    {
+        this->course = course;
+    }
+
+    void setSemester(int semester)
+    {
+        if(semester > 12 || semester < 1 )
+        {
+            std::cout << "Invalid semester!" << std::endl;
+            this->semester = 1;
+        }
+        else this->semester = semester;
+    }
+
+    void setStatus(Status status)
+    {
+        this->status = status;
+    }
+
+    //   ___  _   _
+    //  / _ \| |_| |__   ___ _ __ ___
+    // | | | | __| '_ \ / _ \ '__/ __|
+    // | |_| | |_| | | |  __/ |  \__ \
+    //  \___/ \__|_| |_|\___|_|  |___/
+
     bool operator==(const Student &student);
     
 
