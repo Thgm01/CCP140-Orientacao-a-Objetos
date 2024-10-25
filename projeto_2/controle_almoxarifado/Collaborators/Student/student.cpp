@@ -44,15 +44,46 @@ Status Student::getStatus()
     return this->status;
 }
 
-bool Student::operator==(const Student &student)
-{
-    return (this->registrationNum.compare(student.registrationNum) != 0);
-}
-
-
 //  ____       _   _
 // / ___|  ___| |_| |_ ___ _ __ ___
 // \___ \ / _ \ __| __/ _ \ '__/ __|
 //  ___) |  __/ |_| ||  __/ |  \__ \
 // |____/ \___|\__|\__\___|_|  |___/
 
+
+void Student::getRegistrationNum(std::string registrationNum)
+{
+    this->registrationNum = registrationNum;
+}
+
+void Student::setCourse(Course course)
+{
+    this->course = course;
+}
+
+void Student::setSemester(int semester)
+{
+    if(semester > 12 || semester < 1 )
+    {
+        std::cout << "Invalid semester! Setting 1° semester" << std::endl;
+        this->semester = 1;
+    }
+    else this->semester = semester;
+}
+
+void Student::setStatus(Status status)
+{
+    this->status = status;
+}
+
+
+//   ___  _   _
+//  / _ \| |_| |__   ___ _ __ ___
+// | | | | __| '_ \ / _ \ '__/ __|
+// | |_| | |_| | | |  __/ |  \__ \
+//  \___/ \__|_| |_|\___|_|  |___/
+
+bool Student::operator==(const Student &student)
+{
+    return (this->registrationNum.compare(student.registrationNum) != 0);
+}

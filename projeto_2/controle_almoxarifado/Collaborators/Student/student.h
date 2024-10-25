@@ -90,31 +90,33 @@ public:
     //  ___) |  __/ |_| ||  __/ |  \__ \
     // |____/ \___|\__|\__\___|_|  |___/
 
+    /**
+     * @brief Get the Registration Number object
+     * 
+     * @param registrationNum Student's RA
+     */
+    void getRegistrationNum(std::string registrationNum);
 
-    void getRegistrationNum(std::string registrationNum) // ver de fazer verificação
-    {
-        this->registrationNum = registrationNum;
-    }
+    /**
+     * @brief Set the Course object
+     * 
+     * @param course 
+     */
+    void setCourse(Course course);
 
-    void setCourse(Course course)
-    {
-        this->course = course;
-    }
+    /**
+     * @brief Set the Semester object
+     * 
+     * @param semester 
+     */
+    void setSemester(int semester);
 
-    void setSemester(int semester)
-    {
-        if(semester > 12 || semester < 1 )
-        {
-            std::cout << "Invalid semester!" << std::endl;
-            this->semester = 1;
-        }
-        else this->semester = semester;
-    }
-
-    void setStatus(Status status)
-    {
-        this->status = status;
-    }
+    /**
+     * @brief Set the Status object
+     * 
+     * @param status 
+     */
+    void setStatus(Status status);
 
     //   ___  _   _
     //  / _ \| |_| |__   ___ _ __ ___
@@ -124,8 +126,6 @@ public:
 
     bool operator==(const Student &student);
     
-
-
 private:
     std::string registrationNum;
     Date        registrationDate;
