@@ -153,6 +153,11 @@ int Date::diffYears(const Date &date)
     return years;
 }
 
+void Date::printDate()
+{
+    std::cout << this->day << "/" << this->month << "/" << this->year << std::endl;
+}
+
 bool Date::isLeapYear(const int &year)
 {
     return (year % 4) == 0 && ((year % 100) != 0 || (year % 400) == 0);

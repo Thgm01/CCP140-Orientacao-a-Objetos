@@ -1,3 +1,6 @@
+#ifndef UTILS_COLLABORATORS_H
+#define UTILS_COLLABORATORS_H
+
 enum class Course
 {
     EngenhariaDeAutomacao,
@@ -14,3 +17,5 @@ enum class Status
     Devendo,
     Atrasado
 };
+
+#endif // UTILS_COLLABORATORS_H

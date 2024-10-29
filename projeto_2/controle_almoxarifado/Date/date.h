@@ -24,6 +24,7 @@ public:
 
     bool isOlder(const Date &date);
     int diffYears(const Date &date);
+    void printDate();
 
 private:
     int day = 1;

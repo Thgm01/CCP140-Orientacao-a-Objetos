@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "utils.h"
+
 #include <iostream>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -38,44 +40,51 @@ void MainWindow::on_btnCadastrarAluno_clicked()
 //    std::cout << dataNascimento.diffYears(Date()) <<std::endl;
 //    std::cout << "teste" << std::endl;
 
-    Date data = Date();
-    std::cout << data.getDay() << std::endl;
-    std::cout << data.getMonth() << std::endl;
-    std::cout << data.getYear() << std::endl;
-
-    Date data2 = Date(22, 10, 2024);
-
-    for(int i : data2.getDate())
-    {
-        std::cout << i << std::endl;
-    }
-
-    std::cout << data2.setYear(1920) << std::endl;
-    std::cout << data2.getYear() << std::endl;
+this->recebeInfoAluno();
 }
 
-//Student *MainWindow::recebeInfoAluno()
-//{
-////    std::string name, Date birthdayDate, char gender,
-////                std::string registrationNum, Date registrationDate,
-////                Curso course, int semester, Status status
 
-////    std::string alunoNome = ui->nomeAlunoCadastro->text().toStdString();
 
-////    Date dataNascimento = Date(ui->dataNascimento->date().day(),
-////                               ui->dataNascimento->date().month(),
-////                               ui->dataNascimento->date().year());
+Student *MainWindow::recebeInfoAluno()
+{
+    bool error=false;
+    // Student(std::string name, Date birthdayDate, char gender,
+    //         std::string phone, std::string email,
+    //         std::string registrationNum, Date registrationDate,
+    //         Course course, int semester, Status status);
 
-////    char alunoSexo = ui->alunoSexo->currentText().toStdString()[0];
+    std::string alunoNome = ui->nomeAlunoCadastro->text().toStdString();
+    if(!nameIsValid(alunoNome, ui->nomeAlunoLable)) error=true;
+    std::cout << alunoNome << std::endl;
 
-////    std::string raAluno = ui->raAlunoCadastro->text().toStdString();
+    Date dataNascimento = Date(ui->dataNascimento->date().day(),
+                              ui->dataNascimento->date().month(),
+                              ui->dataNascimento->date().year());
+    dataNascimento.printDate();
 
-////    Curso curso = static_cast<Curso>(ui->cursoAlunoCadastro->currentIndex());
+    char alunoSexo = ui->alunoSexo->currentText().toStdString()[0];
+    std::cout << alunoSexo << std::endl;
 
-////    int semestre = ui->semestreAlunoCadastro->text().toInt();
+    std::string phone = ui->telefoneAlunoCadastro->text().toStdString();
+    if(!phoneIsValid(phone, ui->telefoneAlunoLabel)) error=true;
+    std::cout << phone << std::endl;
 
-////    Student *aluno = new Student(alunoNome, dataNascimento, alunoSexo, raAluno, Date(), curso, semestre, Status::Ok);
+    std::string email = ui->emailAlunoCadastro->text().toStdString();
+    if(!emailIsValid(email, ui->emailAlunoLabel)) error=true;
 
-////    return aluno;
-//}
 
+    std::string raAluno = ui->raAlunoCadastro->text().toStdString();
+    if(!raIsValid(raAluno, ui->raAlunoLabel)) error=true;
+    std::cout << raAluno << std::endl;
+
+    Date registrarionDate = Date();
+    registrarionDate.printDate();
+
+    Course curso = static_cast<Course>(ui->cursoAlunoCadastro->currentIndex());
+    std::cout << static_cast<int>(curso) << std::endl;
+
+    int semestre = ui->semestreAlunoCadastro->text().toInt();
+
+    if(error) return NULL;
+    return new Student(alunoNome, dataNascimento, alunoSexo, phone, email, raAluno, registrarionDate, curso, semestre, Status::Ok);
+}

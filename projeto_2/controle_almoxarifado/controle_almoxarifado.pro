@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     Collaborators/Student/student.cpp \
+    Collaborators/Employee/employee.cpp \
     Date/date.cpp \
     Patrimonio/patrimonio.cpp \
     main.cpp \
@@ -19,12 +20,14 @@ SOURCES += \
 
 HEADERS += \
     Collaborators/Student/student.h \
+    Collaborators/Employee/employee.h \
     Date/date.h \
     Patrimonio/patrimonio.h \
     Collaborators/Person/person.h \
     Collaborators/utils.h \
     mainwindow.h \
-    paginacadastro.h
+    paginacadastro.h \
+    utils.h
 
 FORMS += \
     mainwindow.ui \
