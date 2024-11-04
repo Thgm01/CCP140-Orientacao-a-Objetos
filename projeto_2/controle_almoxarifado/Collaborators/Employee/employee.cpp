@@ -2,9 +2,10 @@
 
 Employee::Employee(std::string name, Date birthdayDate, char gender,
                    std::string phone, std::string email,
-                   std::string registrationNum) : Person(name, birthdayDate, gender, phone, email)
+                   std::string registrationNum, Position position) : Person(name, birthdayDate, gender, phone, email)
 {
     this->registrationNum = registrationNum;
+    this->position = position;
 }
 
 Employee::~Employee()
@@ -22,6 +23,11 @@ std::string Employee::getRegistrationNumber()
     return this->registrationNum;
 }
 
+Position Employee::getPosition()
+{
+    return this->position;
+}
+
 //  ____       _   _
 // / ___|  ___| |_| |_ ___ _ __ ___
 // \___ \ / _ \ __| __/ _ \ '__/ __|
@@ -33,6 +39,10 @@ void Employee::setRegistrationNumber(const std::string &registrationNumber)
     this->registrationNum = registrationNumber;
 }
 
+void Employee::setPosition(const Position &position)
+{
+    this->position = position;
+}
 //   ___  _   _
 //  / _ \| |_| |__   ___ _ __ ___
 // | | | | __| '_ \ / _ \ '__/ __|

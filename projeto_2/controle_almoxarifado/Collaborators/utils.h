@@ -11,6 +11,13 @@ enum class Course
     CienciasDaComputacao    
 };
 
+enum class Position
+{
+    Seguranca,
+    Almoxarifado,
+    Professor
+};
+
 enum class Status
 {
     Ok,
