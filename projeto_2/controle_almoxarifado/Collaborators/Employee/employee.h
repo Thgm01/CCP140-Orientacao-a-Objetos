@@ -11,7 +11,8 @@ class Employee : public Person
     public:
         Employee(std::string name, Date birthdayDate, char gender,
                  std::string phone, std::string email,
-                 std::string registrationNum, Position position);
+                 std::string registrationNum,  Date registrationDate,
+                 Position position, Status status);
         ~Employee();
 
         //   ____      _   _
@@ -20,8 +21,10 @@ class Employee : public Person
         // | |_| |  __/ |_| ||  __/ |  \__ \
         //  \____|\___|\__|\__\___|_|  |___/
 
-        std::string getRegistrationNumber();
+        std::string getRegistrationNum();
+        std::array<int, 3> getRegistrationDate();
         Position getPosition();
+        Status getStatus();
 
         //  ____       _   _
         // / ___|  ___| |_| |_ ___ _ __ ___
@@ -31,6 +34,7 @@ class Employee : public Person
 
         void setRegistrationNumber(const std::string &registrationNum);
         void setPosition(const Position &position);
+        void setStatus(const Status &status);
 
         //   ___  _   _
         //  / _ \| |_| |__   ___ _ __ ___
@@ -42,7 +46,9 @@ class Employee : public Person
 
     private:
         std::string registrationNum;
+        Date registrationDate;
         Position position;
+        Status status;
 };
 
 

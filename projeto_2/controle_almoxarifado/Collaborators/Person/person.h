@@ -30,6 +30,7 @@ public:
          */
         Person(std::string name, Date birthdayDate, char gender, std::string phone, std::string email);
 
+        virtual ~Person();
 
         //   ____      _   _                
         //  / ___| ___| |_| |_ ___ _ __ ___ 
@@ -56,7 +57,7 @@ public:
          *
          * @return person gender as std::string
          */
-        std::string getGender();
+        char getGender();
 
         /**
          * @brief 

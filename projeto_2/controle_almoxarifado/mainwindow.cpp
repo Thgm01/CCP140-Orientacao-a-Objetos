@@ -30,6 +30,8 @@ void MainWindow::dataNascimentoConfig()
 void MainWindow::on_btnCadastrarAluno_clicked()
 {
     Student *aluno = this->recebeInfoAluno();
+    std::cout << ((Student *)listaDeColaboradores[0])->getName() << std::endl;
+    saveCollaboratorsFromList(this->listaDeColaboradores, "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/lixo.txt");
 }
 
 void MainWindow::on_btnCadastrarFuncionario_clicked()
@@ -83,42 +85,40 @@ Student *MainWindow::recebeInfoAluno()
 }
 
 
-// // ESTA ERRADO, FAZER DIREITO
 Employee *MainWindow::recebeInfoFuncionario()
 {
     bool error=false;
 
     std::string funcionarioNome = ui->nomeFuncionarioCadastro->text().toStdString();
     if(!nameIsValid(funcionarioNome, ui->nomeFuncionarioLabel)) error=true;
-    std::cout << funcionarioNome << std::endl;
+    // std::cout << funcionarioNome << std::endl;
 
     Date dataNascimento = Date(ui->dataNascimentoFuncionarioCadastro->date().day(),
                                ui->dataNascimentoFuncionarioCadastro->date().month(),
                                ui->dataNascimentoFuncionarioCadastro->date().year());
-    dataNascimento.printDate();
+    // dataNascimento.printDate();
 
     char funcionarioSexo = ui->funcionarioSexoCadastro->currentText().toStdString()[0];
-    std::cout << funcionarioSexo << std::endl;
+    // std::cout << funcionarioSexo << std::endl;
 
     std::string phone = ui->telefoneFuncionrioCadastro->text().toStdString();
     if(!phoneIsValid(phone, ui->telefoneFuncionarioLabel)) error=true;
-    std::cout << phone << std::endl;
+    // std::cout << phone << std::endl;
 
     std::string email = ui->emailFuncionarioCadastro->text().toStdString();
     if(!emailIsValid(email, ui->emailFuncionarioLabel)) error=true;
-    std::cout << email << std::endl;
+    // std::cout << email << std::endl;
 
     std::string numeroDeRegistroFuncionario = ui->nrFuncionarioCadastro->text().toStdString();
     if(!raIsValid(numeroDeRegistroFuncionario, ui->nrFuncionarioLabel)) error=true;
-    std::cout << numeroDeRegistroFuncionario << std::endl;
+    // std::cout << numeroDeRegistroFuncionario << std::endl;
 
     Date registrarionDate = Date();
-    registrarionDate.printDate();
-
+    // registrarionDate.printDate();
 
     Position cargo = static_cast<Position>(ui->cargoFuncionarioCadastro->currentIndex());
-    std::cout << static_cast<int>(cargo) << std::endl;
+    // std::cout << static_cast<int>(cargo) << std::endl;
 
     if(error) return NULL;
-    return new Employee(funcionarioNome, dataNascimento, funcionarioSexo, phone, email, numeroDeRegistroFuncionario, cargo);
+    return new Employee(funcionarioNome, dataNascimento, funcionarioSexo, phone, email, numeroDeRegistroFuncionario, registrarionDate, cargo, Status::Ok);
 }

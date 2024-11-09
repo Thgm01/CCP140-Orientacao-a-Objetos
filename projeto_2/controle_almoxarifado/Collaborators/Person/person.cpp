@@ -9,6 +9,9 @@ Person::Person(std::string name, Date birthdayDate, char gender, std::string pho
     this->email = email;
 }
 
+Person::~Person()
+{
+}
 
 //   ____      _   _                
 //  / ___| ___| |_| |_ ___ _ __ ___ 
@@ -26,19 +29,9 @@ std::array<int, 3> Person::getBirthdayDate()
     return this->birthdayDate.getDate();
 }
 
-std::string Person::getGender()
+char Person::getGender()
 {
-    switch (this->gender)
-    {
-    case 'm':
-        return "Male";
-
-    case 'f':
-        return "Female";
-
-    default:
-        return "Undefined";
-    };
+    return this->gender;
 }
 
 int Person::getAge()

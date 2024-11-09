@@ -16,7 +16,8 @@ SOURCES += \
     main.cpp \
     Collaborators/Person/person.cpp \
     mainwindow.cpp \
-    paginacadastro.cpp
+    paginacadastro.cpp \
+    Collaborators/collaboratorsList.cpp
 
 HEADERS += \
     Collaborators/Student/student.h \
@@ -27,7 +28,8 @@ HEADERS += \
     Collaborators/utils.h \
     mainwindow.h \
     paginacadastro.h \
-    utils.h
+    utils.h \
+    Collaborators/collaboratorsList.h
 
 FORMS += \
     mainwindow.ui \
