@@ -85,5 +85,5 @@ void Student::setStatus(Status status)
 
 bool Student::operator==(const Student &student)
 {
-    return (this->registrationNum.compare(student.registrationNum) != 0);
+    return (this->registrationNum.compare(student.registrationNum) == 0);
 }

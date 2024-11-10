@@ -53,4 +53,28 @@ bool raIsValid(std::string ra, QLabel *raLabel)
     return true;
 }
 
+bool idIsValid(int id, QLabel *idLabel)
+{
+    if( id / 1000 <= 0) //tem que ter mais de 4 digitos
+    {
+        idLabel->setStyleSheet("background-color: rgba(255, 0, 0,255)");
+        return false;
+    }
+
+    idLabel->setStyleSheet("background-color: rgba(0, 0, 0,0)");
+    return true;
+}
+
+bool patrimonioInfoIsValid(std::string infoPatrimonio, QLabel *infoLabel)
+{
+    if(infoPatrimonio.size() < 3)
+    {
+        infoLabel->setStyleSheet("background-color: rgba(255, 0, 0,255)");
+        return false;
+    }
+
+    infoLabel->setStyleSheet("background-color: rgba(0, 0, 0,0)");
+    return true;
+}
+
 #endif // UTILS_MAINWINDOW_H

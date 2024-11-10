@@ -62,3 +62,8 @@ void Patrimonio::setDataEntrada(const Date &dataEntrada)
 {
     this->dataEntrada = dataEntrada;
 }
+
+bool Patrimonio::operator==(const Patrimonio &patrimonio)
+{
+    return (patrimonio.id == this->id);
+}

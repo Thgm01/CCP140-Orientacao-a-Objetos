@@ -72,5 +72,5 @@ void Employee::setStatus(const Status &status)
 
 bool Employee::operator==(const Employee &employee)
 {
-    return (this->registrationNum.compare(employee.registrationNum) != 0);
+    return (this->registrationNum.compare(employee.registrationNum) == 0);
 }

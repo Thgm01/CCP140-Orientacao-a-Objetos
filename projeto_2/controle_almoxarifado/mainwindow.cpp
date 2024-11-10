@@ -30,17 +30,40 @@ void MainWindow::dataNascimentoConfig()
 void MainWindow::on_btnCadastrarAluno_clicked()
 {
     Student *aluno = this->recebeInfoAluno();
-    std::cout << ((Student *)listaDeColaboradores[0])->getName() << std::endl;
-    saveCollaboratorsFromList(this->listaDeColaboradores, "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/lixo.txt");
+    if(aluno==NULL)
+    {
+        std::cout << "erro ao cadastrar o aluno" << std::endl;
+        return;
+    }
+    if(!alreadyRegistered(*aluno, this->listaDeColaboradores)) this->listaDeColaboradores.push_back(aluno);
+    saveCollaboratorsFromList(this->listaDeColaboradores, "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/collaboratorsData.txt");
 }
 
 void MainWindow::on_btnCadastrarFuncionario_clicked()
 {
-    Employee *teset = this->recebeInfoFuncionario();
-    if(teset == NULL)
+    Employee *funcionario = this->recebeInfoFuncionario();
+    if(funcionario == NULL)
     {
-        std::cout << "erro" << std::endl;
+        std::cout << "erro ao cadastrar o funcionário" << std::endl;
+        return;
     }
+    if(!alreadyRegistered(*funcionario, this->listaDeColaboradores)) this->listaDeColaboradores.push_back(funcionario);
+    saveCollaboratorsFromList(this->listaDeColaboradores, "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/collaboratorsData.txt");
+
+}
+
+void MainWindow::on_btnCadastrarPatrimonio_clicked()
+{
+    Patrimonio *patrimonio = this->recebeInfoPatrimonio();
+    if(patrimonio == NULL)
+    {
+        std::cout << "erro ao cadastrar o patrimonio" << std::endl;
+        return;
+    }
+    if(!alreadyRegistered(*patrimonio, this->listaDePatrimonio)) this->listaDePatrimonio.push_back(patrimonio);
+    savePatrimonioFromList(this->listaDePatrimonio, patrimonioFilePath);
+
+
 }
 
 Student *MainWindow::recebeInfoAluno()
@@ -121,4 +144,28 @@ Employee *MainWindow::recebeInfoFuncionario()
 
     if(error) return NULL;
     return new Employee(funcionarioNome, dataNascimento, funcionarioSexo, phone, email, numeroDeRegistroFuncionario, registrarionDate, cargo, Status::Ok);
+}
+
+Patrimonio *MainWindow::recebeInfoPatrimonio()
+{
+    bool error=false;
+
+    int id = this->ui->idPatrimonioCadastro->text().toInt();
+    if(!idIsValid(id, this->ui->idPatrimonioLabel)) error=true;
+    std::cout << id << std::endl;
+
+    std::string marca = ui->marcaPatrimonioCadastro->text().toStdString();
+    if(!patrimonioInfoIsValid(marca, ui->marcaPatrimonioLabel)) error=true;
+    std::cout << marca << std::endl;
+
+    std::string modelo = ui->modeloPatrimonioCadastro->text().toStdString();
+    if(!patrimonioInfoIsValid(modelo, ui->modeloPatrimonioLabel)) error=true;
+    std::cout << modelo << std::endl;
+
+    std::string descricao = ui->descricaoPatrimonioCadastro->toPlainText().toStdString();
+    if(!patrimonioInfoIsValid(descricao, ui->descricaoPatrimonioLabel)) error=true;
+    std::cout << descricao << std::endl;
+
+    if(error) return NULL;
+    return new Patrimonio(id, marca, modelo, descricao, Date());
 }

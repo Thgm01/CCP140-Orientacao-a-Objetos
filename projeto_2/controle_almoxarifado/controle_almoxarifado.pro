@@ -13,6 +13,7 @@ SOURCES += \
     Collaborators/Employee/employee.cpp \
     Date/date.cpp \
     Patrimonio/patrimonio.cpp \
+    Patrimonio/patrimonioList.cpp \
     main.cpp \
     Collaborators/Person/person.cpp \
     mainwindow.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     Collaborators/Employee/employee.h \
     Date/date.h \
     Patrimonio/patrimonio.h \
+    Patrimonio/patrimonioList.h \
     Collaborators/Person/person.h \
     Collaborators/utils.h \
     mainwindow.h \

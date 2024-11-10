@@ -13,5 +13,7 @@
 
 std::vector<Person *> getCollaboratorsFromFile(std::string filePath);
 void saveCollaboratorsFromList(std::vector<Person *> collaborators, std::string filePath);
+bool alreadyRegistered(Student &student, std::vector<Person *> collaboratorList);
+bool alreadyRegistered(Employee &employee, std::vector<Person *> collaboratorList);
 
 #endif //COLLABORATORS_LIST_H

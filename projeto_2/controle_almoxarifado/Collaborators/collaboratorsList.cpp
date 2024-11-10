@@ -163,3 +163,35 @@ void saveCollaboratorsFromList(std::vector<Person *> collaborators, std::string 
 
     file.close();
 }
+
+bool alreadyRegistered(Student &student, std::vector<Person *> collaboratorList)
+{
+    for(Person *collaborator : collaboratorList)
+    {
+        if(dynamic_cast<Student *>(collaborator))
+        {
+            if(student == *((Student *) collaborator))
+            {
+                std::cout << "Student already registered" << std::endl;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool alreadyRegistered(Employee &employee, std::vector<Person *> collaboratorList)
+{
+    for(Person *collaborator : collaboratorList)
+    {
+        if(dynamic_cast<Employee *>(collaborator))
+        {
+            if(employee == *((Employee *) collaborator))
+            {
+                std::cout << "Employee already registered" << std::endl;
+                return true;
+            }
+        }
+    }
+    return false;
+}
