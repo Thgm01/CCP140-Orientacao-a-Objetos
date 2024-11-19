@@ -106,7 +106,7 @@ std::vector<Person *> getCollaboratorsFromFile(std::string filePath)
     return collaboratorsList;
 }
 
-void getLoandDataFromFile(std::vector<Person *> collaborators, std::vector<Patrimonio *> patrimonioList, std::string filePath)
+void getLoanDataFromFile(std::vector<Person *> collaborators, std::vector<Patrimonio *> patrimonioList, std::string filePath)
 {
     if(collaborators.size() != 0 && patrimonioList.size() != 0)
     {
@@ -128,97 +128,40 @@ void getLoandDataFromFile(std::vector<Person *> collaborators, std::vector<Patri
     {
 
         if(line.size() == 0) break;
-    //     // std::cout << line << std::endl;
-    //     std::stringstream split(line);
+         // std::cout << line << std::endl;
+         std::stringstream split(line);
 
-    //     std::string buffer;
-    //     std::getline(split, buffer , ';');
-    //     char typeCadastro = buffer[0];
-    //     // std::cout << buffer << std::endl;
+         std::string buffer;
+         std::getline(split, buffer , ';');
+         char typePerson = buffer[0];
+         // std::cout << buffer << std::endl;
 
-    //     std::getline(split, buffer, ';');
-    //     std::string registerName = buffer;
-    //     // std::cout << buffer << std::endl;
+         std::getline(split, buffer, ';');
+         std::string registerNum = buffer;
+         // std::cout << buffer << std::endl;
 
-    //     std::getline(split, buffer, ';');
-    //     int birthdayDay = std::stoi(buffer);
-    //     // std::cout << buffer << std::endl;
+         std::getline(split, buffer, ';');
+         int patrimonioId = std::stoi(buffer);
+        // std::cout << buffer << std::endl;
 
-    //     std::getline(split, buffer, ';');
-    //     int birthdayMonth = std::stoi(buffer);
-    //     // std::cout << buffer << std::endl;
-
-    //     std::getline(split, buffer, ';');
-    //     int birthdayYear = std::stoi(buffer);
-    //     // std::cout << buffer << std::endl;
-
-    //     Date birthdayDate = Date(birthdayDay, birthdayMonth, birthdayYear);
-
-    //     std::getline(split, buffer, ';');
-    //     char gender = buffer[0];
-    //     // std::cout << buffer << std::endl;
-
-    //     std::getline(split, buffer, ';');
-    //     std::string phone = buffer;
-    //     // std::cout << buffer << std::endl;
-
-    //     std::getline(split, buffer, ';');
-    //     std::string email = buffer;
-    //     // std::cout << buffer << std::endl;
-
-    //     std::getline(split, buffer, ';');
-    //     std::string RA = buffer;
-    //     // std::cout << buffer << std::endl;
-
-    //     std::getline(split, buffer, ';');
-    //     int registerDay = std::stoi(buffer);
-    //     // std::cout << buffer << std::endl;
-
-    //     std::getline(split, buffer, ';');
-    //     int registerMonth = std::stoi(buffer);
-    //     // std::cout << buffer << std::endl;
-
-    //     std::getline(split, buffer, ';');
-    //     int registerYear = std::stoi(buffer);
-    //     // std::cout << buffer << std::endl;
-
-    //     Date registerDate = Date(registerDay, registerMonth, registerYear);
-
-    //     if(typeCadastro == 's')
-    //     {
-    //         std::getline(split, buffer, ';');
-    //         Course course = static_cast<Course>(std::stoi(buffer));
-    //         // std::cout << buffer << std::endl;
-
-    //         std::getline(split, buffer, ';');
-    //         int semester = std::stoi(buffer);
-    //         // std::cout << buffer << std::endl;
-
-    //         std::getline(split, buffer, ';');
-    //         Status status = static_cast<Status>(std::stoi(buffer));
-    //         // std::cout << buffer << std::endl;
-
-    //         collaboratorsList.push_back(new Student(registerName, birthdayDate, gender, phone, email, RA, registerDate, course, semester, status));
-    //     }
-    //     else
-    //     {
-    //         std::getline(split, buffer, ';');
-    //         Position position = static_cast<Position>(std::stoi(buffer));
-    //         // std::cout << buffer << std::endl;
-
-    //         std::getline(split, buffer, ';');
-    //         Status status = static_cast<Status>(std::stoi(buffer));
-    //         // std::cout << buffer << std::endl;
-
-    //         collaboratorsList.push_back(new Employee(registerName, birthdayDate, gender, phone, email, RA, registerDate, position, status));
-    //     }
-    // }
+         if(typePerson == 's')
+         {
+            for(int i=0; i<(int) collaborators.size(); i++)
+            {
+                if(dynamic_cast<Student *>(collaborators[i]))
+                {
+                    Student *student = ((Student *) collaborators[i]);
+                    if(registerNum == student->getRegistrationNum())
+                    {
+                        student->registerPatrimonioLoan(patrimonioList, patrimonioId);
+                        break;
+                    }
+                }
+            }
+         }
+    }
 }
 
-
-
-
-}
 
 void saveCollaboratorsFromList(std::vector<Person *> collaborators, std::string filePath)
 {

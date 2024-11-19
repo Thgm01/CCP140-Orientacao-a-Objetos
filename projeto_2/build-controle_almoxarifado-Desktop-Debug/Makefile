@@ -53,22 +53,26 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../controle_almoxarifado/Collaborators/Student/student.cpp \
-		../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp \
+		../controle_almoxarifado/Collaborators/Employee/employee.cpp \
 		../controle_almoxarifado/Date/date.cpp \
 		../controle_almoxarifado/Patrimonio/patrimonio.cpp \
+		../controle_almoxarifado/Patrimonio/patrimonioList.cpp \
 		../controle_almoxarifado/main.cpp \
 		../controle_almoxarifado/Collaborators/Person/person.cpp \
 		../controle_almoxarifado/mainwindow.cpp \
-		../controle_almoxarifado/paginacadastro.cpp moc_mainwindow.cpp \
+		../controle_almoxarifado/paginacadastro.cpp \
+		../controle_almoxarifado/Collaborators/collaboratorsList.cpp moc_mainwindow.cpp \
 		moc_paginacadastro.cpp
 OBJECTS       = student.o \
-		collaboratorslist.o \
+		employee.o \
 		date.o \
 		patrimonio.o \
+		patrimonioList.o \
 		main.o \
 		person.o \
 		mainwindow.o \
 		paginacadastro.o \
+		collaboratorsList.o \
 		moc_mainwindow.o \
 		moc_paginacadastro.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -121,6 +125,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmlworkerscript.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickcontrols2.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quicktemplates2.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri \
@@ -166,20 +172,25 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../controle_almoxarifado/controle_almoxarifado.pro ../controle_almoxarifado/Collaborators/Student/student.h \
-		../controle_almoxarifado/Collaborators/List/collaboratorslist.h \
+		../controle_almoxarifado/Collaborators/Employee/employee.h \
 		../controle_almoxarifado/Date/date.h \
 		../controle_almoxarifado/Patrimonio/patrimonio.h \
+		../controle_almoxarifado/Patrimonio/patrimonioList.h \
 		../controle_almoxarifado/Collaborators/Person/person.h \
 		../controle_almoxarifado/Collaborators/utils.h \
 		../controle_almoxarifado/mainwindow.h \
-		../controle_almoxarifado/paginacadastro.h ../controle_almoxarifado/Collaborators/Student/student.cpp \
-		../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp \
+		../controle_almoxarifado/paginacadastro.h \
+		../controle_almoxarifado/utils.h \
+		../controle_almoxarifado/Collaborators/collaboratorsList.h ../controle_almoxarifado/Collaborators/Student/student.cpp \
+		../controle_almoxarifado/Collaborators/Employee/employee.cpp \
 		../controle_almoxarifado/Date/date.cpp \
 		../controle_almoxarifado/Patrimonio/patrimonio.cpp \
+		../controle_almoxarifado/Patrimonio/patrimonioList.cpp \
 		../controle_almoxarifado/main.cpp \
 		../controle_almoxarifado/Collaborators/Person/person.cpp \
 		../controle_almoxarifado/mainwindow.cpp \
-		../controle_almoxarifado/paginacadastro.cpp
+		../controle_almoxarifado/paginacadastro.cpp \
+		../controle_almoxarifado/Collaborators/collaboratorsList.cpp
 QMAKE_TARGET  = controle_almoxarifado
 DESTDIR       = 
 TARGET        = controle_almoxarifado
@@ -241,6 +252,8 @@ Makefile: ../controle_almoxarifado/controle_almoxarifado.pro /usr/lib/x86_64-lin
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmlworkerscript.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickcontrols2.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quicktemplates2.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri \
@@ -337,6 +350,8 @@ Makefile: ../controle_almoxarifado/controle_almoxarifado.pro /usr/lib/x86_64-lin
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmlworkerscript.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickcontrols2.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quicktemplates2.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri:
@@ -397,8 +412,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../controle_almoxarifado/Collaborators/Student/student.h ../controle_almoxarifado/Collaborators/List/collaboratorslist.h ../controle_almoxarifado/Date/date.h ../controle_almoxarifado/Patrimonio/patrimonio.h ../controle_almoxarifado/Collaborators/Person/person.h ../controle_almoxarifado/Collaborators/utils.h ../controle_almoxarifado/mainwindow.h ../controle_almoxarifado/paginacadastro.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../controle_almoxarifado/Collaborators/Student/student.cpp ../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp ../controle_almoxarifado/Date/date.cpp ../controle_almoxarifado/Patrimonio/patrimonio.cpp ../controle_almoxarifado/main.cpp ../controle_almoxarifado/Collaborators/Person/person.cpp ../controle_almoxarifado/mainwindow.cpp ../controle_almoxarifado/paginacadastro.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../controle_almoxarifado/Collaborators/Student/student.h ../controle_almoxarifado/Collaborators/Employee/employee.h ../controle_almoxarifado/Date/date.h ../controle_almoxarifado/Patrimonio/patrimonio.h ../controle_almoxarifado/Patrimonio/patrimonioList.h ../controle_almoxarifado/Collaborators/Person/person.h ../controle_almoxarifado/Collaborators/utils.h ../controle_almoxarifado/mainwindow.h ../controle_almoxarifado/paginacadastro.h ../controle_almoxarifado/utils.h ../controle_almoxarifado/Collaborators/collaboratorsList.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../controle_almoxarifado/Collaborators/Student/student.cpp ../controle_almoxarifado/Collaborators/Employee/employee.cpp ../controle_almoxarifado/Date/date.cpp ../controle_almoxarifado/Patrimonio/patrimonio.cpp ../controle_almoxarifado/Patrimonio/patrimonioList.cpp ../controle_almoxarifado/main.cpp ../controle_almoxarifado/Collaborators/Person/person.cpp ../controle_almoxarifado/mainwindow.cpp ../controle_almoxarifado/paginacadastro.cpp ../controle_almoxarifado/Collaborators/collaboratorsList.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../controle_almoxarifado/mainwindow.ui ../controle_almoxarifado/paginacadastro.ui $(DISTDIR)/
 
 
@@ -440,6 +455,10 @@ moc_mainwindow.cpp: ../controle_almoxarifado/mainwindow.h \
 		../controle_almoxarifado/Date/date.h \
 		../controle_almoxarifado/Collaborators/Person/person.h \
 		../controle_almoxarifado/Collaborators/utils.h \
+		../controle_almoxarifado/Patrimonio/patrimonio.h \
+		../controle_almoxarifado/Collaborators/Employee/employee.h \
+		../controle_almoxarifado/Patrimonio/patrimonioList.h \
+		../controle_almoxarifado/Collaborators/collaboratorsList.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/build-controle_almoxarifado-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../controle_almoxarifado/mainwindow.h -o moc_mainwindow.cpp
@@ -477,15 +496,15 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 student.o: ../controle_almoxarifado/Collaborators/Student/student.cpp ../controle_almoxarifado/Collaborators/Student/student.h \
 		../controle_almoxarifado/Date/date.h \
 		../controle_almoxarifado/Collaborators/Person/person.h \
-		../controle_almoxarifado/Collaborators/utils.h
+		../controle_almoxarifado/Collaborators/utils.h \
+		../controle_almoxarifado/Patrimonio/patrimonio.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o student.o ../controle_almoxarifado/Collaborators/Student/student.cpp
 
-collaboratorslist.o: ../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp ../controle_almoxarifado/Collaborators/List/collaboratorslist.h \
-		../controle_almoxarifado/Collaborators/Student/student.h \
-		../controle_almoxarifado/Date/date.h \
+employee.o: ../controle_almoxarifado/Collaborators/Employee/employee.cpp ../controle_almoxarifado/Collaborators/Employee/employee.h \
 		../controle_almoxarifado/Collaborators/Person/person.h \
+		../controle_almoxarifado/Date/date.h \
 		../controle_almoxarifado/Collaborators/utils.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o collaboratorslist.o ../controle_almoxarifado/Collaborators/List/collaboratorslist.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o employee.o ../controle_almoxarifado/Collaborators/Employee/employee.cpp
 
 date.o: ../controle_almoxarifado/Date/date.cpp ../controle_almoxarifado/Date/date.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o date.o ../controle_almoxarifado/Date/date.cpp
@@ -494,12 +513,21 @@ patrimonio.o: ../controle_almoxarifado/Patrimonio/patrimonio.cpp ../controle_alm
 		../controle_almoxarifado/Date/date.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o patrimonio.o ../controle_almoxarifado/Patrimonio/patrimonio.cpp
 
+patrimonioList.o: ../controle_almoxarifado/Patrimonio/patrimonioList.cpp ../controle_almoxarifado/Patrimonio/patrimonioList.h \
+		../controle_almoxarifado/Patrimonio/patrimonio.h \
+		../controle_almoxarifado/Date/date.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o patrimonioList.o ../controle_almoxarifado/Patrimonio/patrimonioList.cpp
+
 main.o: ../controle_almoxarifado/main.cpp ../controle_almoxarifado/mainwindow.h \
 		../controle_almoxarifado/paginacadastro.h \
 		../controle_almoxarifado/Collaborators/Student/student.h \
 		../controle_almoxarifado/Date/date.h \
 		../controle_almoxarifado/Collaborators/Person/person.h \
-		../controle_almoxarifado/Collaborators/utils.h
+		../controle_almoxarifado/Collaborators/utils.h \
+		../controle_almoxarifado/Patrimonio/patrimonio.h \
+		../controle_almoxarifado/Collaborators/Employee/employee.h \
+		../controle_almoxarifado/Patrimonio/patrimonioList.h \
+		../controle_almoxarifado/Collaborators/collaboratorsList.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../controle_almoxarifado/main.cpp
 
 person.o: ../controle_almoxarifado/Collaborators/Person/person.cpp ../controle_almoxarifado/Collaborators/Person/person.h \
@@ -512,12 +540,26 @@ mainwindow.o: ../controle_almoxarifado/mainwindow.cpp ../controle_almoxarifado/m
 		../controle_almoxarifado/Date/date.h \
 		../controle_almoxarifado/Collaborators/Person/person.h \
 		../controle_almoxarifado/Collaborators/utils.h \
-		ui_mainwindow.h
+		../controle_almoxarifado/Patrimonio/patrimonio.h \
+		../controle_almoxarifado/Collaborators/Employee/employee.h \
+		../controle_almoxarifado/Patrimonio/patrimonioList.h \
+		../controle_almoxarifado/Collaborators/collaboratorsList.h \
+		ui_mainwindow.h \
+		../controle_almoxarifado/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../controle_almoxarifado/mainwindow.cpp
 
 paginacadastro.o: ../controle_almoxarifado/paginacadastro.cpp ../controle_almoxarifado/paginacadastro.h \
 		ui_paginacadastro.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o paginacadastro.o ../controle_almoxarifado/paginacadastro.cpp
+
+collaboratorsList.o: ../controle_almoxarifado/Collaborators/collaboratorsList.cpp ../controle_almoxarifado/Collaborators/collaboratorsList.h \
+		../controle_almoxarifado/Collaborators/Person/person.h \
+		../controle_almoxarifado/Date/date.h \
+		../controle_almoxarifado/Collaborators/Student/student.h \
+		../controle_almoxarifado/Collaborators/utils.h \
+		../controle_almoxarifado/Patrimonio/patrimonio.h \
+		../controle_almoxarifado/Collaborators/Employee/employee.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o collaboratorsList.o ../controle_almoxarifado/Collaborators/collaboratorsList.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

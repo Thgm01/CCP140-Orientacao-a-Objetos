@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -34,25 +34,74 @@
            <attribute name="title">
             <string>Aluno</string>
            </attribute>
-           <widget class="QLabel" name="label_4">
-            <property name="geometry">
-             <rect>
-              <x>200</x>
-              <y>150</y>
-              <width>65</width>
-              <height>33</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>16</pointsize>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Nome:</string>
-            </property>
-           </widget>
+           <layout class="QGridLayout" name="gridLayout_6">
+            <item row="1" column="0">
+             <spacer name="verticalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QLabel" name="raConstultar">
+                <property name="font">
+                 <font>
+                  <pointsize>16</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>RA</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="raCollaboratorsConsulta">
+                <property name="minimumSize">
+                 <size>
+                  <width>201</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>16</pointsize>
+                 </font>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_20">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item row="2" column="0">
+             <widget class="QPushButton" name="btnConsultar">
+              <property name="text">
+               <string>Consultar</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
           <widget class="QWidget" name="tab_4">
            <attribute name="title">
@@ -90,6 +139,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -115,6 +165,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -150,6 +201,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -216,6 +268,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -263,6 +316,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -304,6 +358,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -360,6 +415,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -377,9 +433,9 @@
                 </property>
                 <property name="minimumTime">
                  <time>
-                  <hour>20</hour>
-                  <minute>53</minute>
-                  <second>32</second>
+                  <hour>0</hour>
+                  <minute>0</minute>
+                  <second>0</second>
                  </time>
                 </property>
                 <property name="displayFormat">
@@ -425,6 +481,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -460,6 +517,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -493,6 +551,7 @@
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -505,11 +564,8 @@
                <widget class="QTextEdit" name="descricaoPatrimonioCadastro">
                 <property name="html">
                  <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
@@ -537,6 +593,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -578,6 +635,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -619,6 +677,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -665,6 +724,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -706,6 +766,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -762,6 +823,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -779,9 +841,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </property>
                 <property name="minimumTime">
                  <time>
-                  <hour>20</hour>
-                  <minute>53</minute>
-                  <second>32</second>
+                  <hour>0</hour>
+                  <minute>0</minute>
+                  <second>0</second>
                  </time>
                 </property>
                 <property name="displayFormat">
@@ -814,6 +876,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -849,6 +912,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -875,6 +939,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -900,6 +965,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -935,6 +1001,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <property name="font">
                  <font>
                   <pointsize>16</pointsize>
+                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>

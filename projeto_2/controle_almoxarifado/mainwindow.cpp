@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->dataNascimentoConfig();
+    getLoanDataFromFile(listaDeColaboradores, listaDePatrimonio, loanFilePath);
 }
 
 MainWindow::~MainWindow()
@@ -168,3 +169,9 @@ Patrimonio *MainWindow::recebeInfoPatrimonio()
     if(error) return NULL;
     return new Patrimonio(id, marca, modelo, descricao, Date());
 }
+
+void MainWindow::on_btnConsultar_clicked()
+{
+//    std::cout << ((Student *)this->listaDeColaboradores[0])->patrimoniosInLoan.size() << std::endl;
+;}
+
