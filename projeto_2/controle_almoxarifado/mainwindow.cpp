@@ -107,7 +107,6 @@ Student *MainWindow::recebeInfoAluno()
     return new Student(alunoNome, dataNascimento, alunoSexo, phone, email, raAluno, registrarionDate, curso, semestre, Status::Ok);
 }
 
-
 Employee *MainWindow::recebeInfoFuncionario()
 {
     bool error=false;

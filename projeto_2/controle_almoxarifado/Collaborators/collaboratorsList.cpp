@@ -106,6 +106,120 @@ std::vector<Person *> getCollaboratorsFromFile(std::string filePath)
     return collaboratorsList;
 }
 
+void getLoandDataFromFile(std::vector<Person *> collaborators, std::vector<Patrimonio *> patrimonioList, std::string filePath)
+{
+    if(collaborators.size() != 0 && patrimonioList.size() != 0)
+    {
+        if(collaborators[0]==NULL || patrimonioList[0] == NULL) return;
+    }
+    else return;
+
+    std::ifstream file(filePath);
+
+    if (!file.is_open())
+    {
+        std::cerr << "Error trying to open the file with path " << filePath << std::endl;
+        return;
+    }
+
+    std::string line;
+
+    while (std::getline(file, line))
+    {
+
+        if(line.size() == 0) break;
+    //     // std::cout << line << std::endl;
+    //     std::stringstream split(line);
+
+    //     std::string buffer;
+    //     std::getline(split, buffer , ';');
+    //     char typeCadastro = buffer[0];
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     std::string registerName = buffer;
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     int birthdayDay = std::stoi(buffer);
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     int birthdayMonth = std::stoi(buffer);
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     int birthdayYear = std::stoi(buffer);
+    //     // std::cout << buffer << std::endl;
+
+    //     Date birthdayDate = Date(birthdayDay, birthdayMonth, birthdayYear);
+
+    //     std::getline(split, buffer, ';');
+    //     char gender = buffer[0];
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     std::string phone = buffer;
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     std::string email = buffer;
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     std::string RA = buffer;
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     int registerDay = std::stoi(buffer);
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     int registerMonth = std::stoi(buffer);
+    //     // std::cout << buffer << std::endl;
+
+    //     std::getline(split, buffer, ';');
+    //     int registerYear = std::stoi(buffer);
+    //     // std::cout << buffer << std::endl;
+
+    //     Date registerDate = Date(registerDay, registerMonth, registerYear);
+
+    //     if(typeCadastro == 's')
+    //     {
+    //         std::getline(split, buffer, ';');
+    //         Course course = static_cast<Course>(std::stoi(buffer));
+    //         // std::cout << buffer << std::endl;
+
+    //         std::getline(split, buffer, ';');
+    //         int semester = std::stoi(buffer);
+    //         // std::cout << buffer << std::endl;
+
+    //         std::getline(split, buffer, ';');
+    //         Status status = static_cast<Status>(std::stoi(buffer));
+    //         // std::cout << buffer << std::endl;
+
+    //         collaboratorsList.push_back(new Student(registerName, birthdayDate, gender, phone, email, RA, registerDate, course, semester, status));
+    //     }
+    //     else
+    //     {
+    //         std::getline(split, buffer, ';');
+    //         Position position = static_cast<Position>(std::stoi(buffer));
+    //         // std::cout << buffer << std::endl;
+
+    //         std::getline(split, buffer, ';');
+    //         Status status = static_cast<Status>(std::stoi(buffer));
+    //         // std::cout << buffer << std::endl;
+
+    //         collaboratorsList.push_back(new Employee(registerName, birthdayDate, gender, phone, email, RA, registerDate, position, status));
+    //     }
+    // }
+}
+
+
+
+
+}
+
 void saveCollaboratorsFromList(std::vector<Person *> collaborators, std::string filePath)
 {
     if(collaborators.size() != 0)

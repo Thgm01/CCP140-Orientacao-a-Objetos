@@ -9,10 +9,12 @@
 #define STUDENT_H
 
 #include <array>
+#include <vector>
 
 #include "Date/date.h"
 #include "../Person/person.h"
 #include "../utils.h"
+#include "../../Patrimonio/patrimonio.h"
 
 /**
  * @brief Class that represents a Student
@@ -125,6 +127,10 @@ public:
     //  \___/ \__|_| |_|\___|_|  |___/
 
     bool operator==(const Student &student);
+
+    void registerPatrimonioLoan(std::vector<Patrimonio *> patrimonioList, const int &patrimonioId);
+
+    void loanedPatrimonioReturned(const int &patrimonioId);
     
 private:
     std::string registrationNum;
@@ -132,6 +138,7 @@ private:
     Course      course;
     int         semester;
     Status      status;
+    std::vector<Patrimonio *> patrimoniosInLoan;
 };
 
 #endif // STUDENT_H

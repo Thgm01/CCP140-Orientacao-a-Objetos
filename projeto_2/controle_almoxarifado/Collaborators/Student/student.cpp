@@ -87,3 +87,31 @@ bool Student::operator==(const Student &student)
 {
     return (this->registrationNum.compare(student.registrationNum) == 0);
 }
+
+void Student::registerPatrimonioLoan(std::vector<Patrimonio *> patrimonioList, const int &patrimonioId)
+{
+    for(Patrimonio *patrimonio : patrimonioList)
+    {
+        if(patrimonio->getId() == patrimonioId)
+        {
+            this->patrimoniosInLoan.push_back(patrimonio);
+            std::cout << "Patrimonio loaned to " << this->getName() << std::endl;
+            return;
+        }
+    }
+    std::cout << "Patrimonio not founded" << std::endl;
+}
+
+void Student::loanedPatrimonioReturned(const int &patrimonioId)
+{
+    for(int i=0; i<this->patrimoniosInLoan.size(); i++)
+    {
+        if(this->patrimoniosInLoan[i]->getId() == patrimonioId)
+        {
+            this->patrimoniosInLoan.erase(this->patrimoniosInLoan.begin()+i);
+            std::cout << "Patrimonio Returned." << std::endl;
+            return;
+        }
+    }
+    std::cout << "Patrimonio not founded" << std::endl;
+}

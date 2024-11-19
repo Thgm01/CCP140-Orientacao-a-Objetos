@@ -48,7 +48,6 @@ private:
 
     std::vector<Person *> listaDeColaboradores = getCollaboratorsFromFile(collaboratorsFilePath);
     std::vector<Patrimonio *> listaDePatrimonio = getPatrimonioFromFile(patrimonioFilePath);
-// getPatrimonioFromFile(patrimonioFilePath);
 };
 
 #endif // MAINWINDOW_H
