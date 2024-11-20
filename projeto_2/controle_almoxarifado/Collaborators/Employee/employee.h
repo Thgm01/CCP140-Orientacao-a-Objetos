@@ -2,9 +2,11 @@
 #define EMPLOYEE_H
 
 #include <string>
+#include <vector>
 
 #include "../Person/person.h"
 #include "../utils.h"
+#include "../../Patrimonio/patrimonio.h"
 
 class Employee : public Person
 {
@@ -44,11 +46,18 @@ class Employee : public Person
 
         bool operator==(const Employee &employee);
 
+        void registerPatrimonioLoan(std::vector<Patrimonio *> patrimonioList, const int &patrimonioId);
+
+        void loanedPatrimonioReturned(const int &patrimonioId);
+
+        std::vector<Patrimonio *> getLoanedPatrimonio();
+
     private:
         std::string registrationNum;
         Date registrationDate;
         Position position;
         Status status;
+        std::vector<Patrimonio *> patrimoniosInLoan;
 };
 
 

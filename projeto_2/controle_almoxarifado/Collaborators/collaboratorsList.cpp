@@ -144,8 +144,11 @@ void getLoanDataFromFile(std::vector<Person *> collaborators, std::vector<Patrim
          int patrimonioId = std::stoi(buffer);
         // std::cout << buffer << std::endl;
 
-         if(typePerson == 's')
-         {
+         Patrimonio *loanedPatrimonio = findPatrimonio(patrimonioId, patrimonioList);
+         if(loanedPatrimonio == NULL) continue;
+
+        if(typePerson == 's')
+        {
             for(int i=0; i<(int) collaborators.size(); i++)
             {
                 if(dynamic_cast<Student *>(collaborators[i]))
@@ -154,11 +157,28 @@ void getLoanDataFromFile(std::vector<Person *> collaborators, std::vector<Patrim
                     if(registerNum == student->getRegistrationNum())
                     {
                         student->registerPatrimonioLoan(patrimonioList, patrimonioId);
+                        loanedPatrimonio->setLoanedTo(student);
                         break;
                     }
                 }
             }
-         }
+        }
+        else
+        {
+            for(int i=0; i<(int) collaborators.size(); i++)
+            {
+                if(dynamic_cast<Employee *>(collaborators[i]))
+                {
+                    Employee *employee = ((Employee *) collaborators[i]);
+                    if(registerNum == employee->getRegistrationNum())
+                    {
+                        employee->registerPatrimonioLoan(patrimonioList, patrimonioId);
+                        loanedPatrimonio->setLoanedTo(employee);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -251,4 +271,23 @@ bool alreadyRegistered(Employee &employee, std::vector<Person *> collaboratorLis
         }
     }
     return false;
+}
+
+Person *findPerson(std::string registrationNumber, std::vector<Person *>collaboratorList)
+{
+    if(collaboratorList.size()==0) return NULL;
+    else if(collaboratorList[0] == NULL) return NULL;
+    for(Person *person : collaboratorList)
+    {
+        if(dynamic_cast<Student *>(person))
+        {
+            if(((Student *) person)->getRegistrationNum() == registrationNumber) return person;
+        }
+        else
+        {
+            if(((Employee *)person)->getRegistrationNum() == registrationNumber) return person;
+        }
+    }
+    std::cout << "Person not founded" << std::endl;
+    return NULL;
 }

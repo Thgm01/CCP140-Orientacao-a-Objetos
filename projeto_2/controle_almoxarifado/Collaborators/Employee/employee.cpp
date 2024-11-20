@@ -74,3 +74,36 @@ bool Employee::operator==(const Employee &employee)
 {
     return (this->registrationNum.compare(employee.registrationNum) == 0);
 }
+
+void Employee::registerPatrimonioLoan(std::vector<Patrimonio *> patrimonioList, const int &patrimonioId)
+{
+    for(Patrimonio *patrimonio : patrimonioList)
+    {
+        if(patrimonio->getId() == patrimonioId)
+        {
+            this->patrimoniosInLoan.push_back(patrimonio);
+            std::cout << "Patrimonio loaned to " << this->getName() << std::endl;
+            return;
+        }
+    }
+    std::cout << "Patrimonio not founded" << std::endl;
+}
+
+void Employee::loanedPatrimonioReturned(const int &patrimonioId)
+{
+    for(int i=0; i<(int)this->patrimoniosInLoan.size(); i++)
+    {
+        if(this->patrimoniosInLoan[i]->getId() == patrimonioId)
+        {
+            this->patrimoniosInLoan.erase(this->patrimoniosInLoan.begin()+i);
+            std::cout << "Patrimonio Returned." << std::endl;
+            return;
+        }
+    }
+    std::cout << "Patrimonio not founded" << std::endl;
+}
+
+std::vector<Patrimonio *> Employee::getLoanedPatrimonio()
+{
+    return this->patrimoniosInLoan;
+}

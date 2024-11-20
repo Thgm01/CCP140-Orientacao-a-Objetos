@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 
 #include <vector>
 
@@ -44,10 +45,11 @@ private:
     PaginaCadastro *paginaCadastro;
 
     void dataNascimentoConfig();
+    void showPatrimonioLoaned(std::vector<Patrimonio *> patrimonioList);
 
-    std::string collaboratorsFilePath = "/home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/collaboratorsData.txt";
-    std::string patrimonioFilePath = "/home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/patrimoniosData.txt";
-    std::string loanFilePath = "/home/thiago/Documents/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/loanData.txt";
+    std::string collaboratorsFilePath = "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/collaboratorsData.txt";
+    std::string patrimonioFilePath = "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/patrimoniosData.txt";
+    std::string loanFilePath = "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/loanData.txt";
 
     std::vector<Person *> listaDeColaboradores = getCollaboratorsFromFile(collaboratorsFilePath);
     std::vector<Patrimonio *> listaDePatrimonio = getPatrimonioFromFile(patrimonioFilePath);

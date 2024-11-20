@@ -104,7 +104,7 @@ void Student::registerPatrimonioLoan(std::vector<Patrimonio *> patrimonioList, c
 
 void Student::loanedPatrimonioReturned(const int &patrimonioId)
 {
-    for(int i=0; i<this->patrimoniosInLoan.size(); i++)
+    for(int i=0; i<(int)this->patrimoniosInLoan.size(); i++)
     {
         if(this->patrimoniosInLoan[i]->getId() == patrimonioId)
         {
@@ -114,4 +114,9 @@ void Student::loanedPatrimonioReturned(const int &patrimonioId)
         }
     }
     std::cout << "Patrimonio not founded" << std::endl;
+}
+
+std::vector<Patrimonio *> Student::getLoanedPatrimonio()
+{
+    return this->patrimoniosInLoan;
 }

@@ -92,8 +92,6 @@ bool alreadyRegistered(Patrimonio &patrimonio, std::vector<Patrimonio *> patrimo
 {
     for(Patrimonio *patrimonio_lista : patrimonioList)
     {
-
-
         if(patrimonio == *((Patrimonio *) patrimonio_lista))
         {
             std::cout << "Patrimonio already registered" << std::endl;
@@ -102,3 +100,13 @@ bool alreadyRegistered(Patrimonio &patrimonio, std::vector<Patrimonio *> patrimo
     }
     return false;
 }
+
+Patrimonio *findPatrimonio(int id, std::vector<Patrimonio *> patrimonioList)
+{
+    for(Patrimonio *patrimonio : patrimonioList)
+    {
+        if(patrimonio->getId() == id) return patrimonio;
+    }
+    return NULL;
+}
+

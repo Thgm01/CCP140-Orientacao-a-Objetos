@@ -4,6 +4,7 @@
 #include <string>
 
 #include "Date/date.h"
+#include "../Collaborators/Person/person.h"
 
 class Patrimonio
 {
@@ -16,11 +17,13 @@ public:
     std::string getModelo();
     std::string getDescricao();
     Date getDataDeEntrada();
+    Person *getLoanedTo();
 
     bool setId(const int &id);
     void setMarca(const std::string &marca);
     void setModelo(const std::string &modelo);
     void setDataEntrada(const Date &dataEntrada);
+    void setLoanedTo(Person *person);
 
     bool operator==(const Patrimonio &patrimonio);
 
@@ -30,6 +33,7 @@ private:
     std::string modelo;
     std::string descricao;
     Date        dataEntrada;
+    Person * loanedTo;
 };
 
 #endif // PATRIMONIO_H

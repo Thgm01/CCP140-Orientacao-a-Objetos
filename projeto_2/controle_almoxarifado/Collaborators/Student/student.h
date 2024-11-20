@@ -131,6 +131,8 @@ public:
     void registerPatrimonioLoan(std::vector<Patrimonio *> patrimonioList, const int &patrimonioId);
 
     void loanedPatrimonioReturned(const int &patrimonioId);
+
+    std::vector<Patrimonio *> getLoanedPatrimonio();
     
 private:
     std::string registrationNum;

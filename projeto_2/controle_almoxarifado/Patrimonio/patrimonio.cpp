@@ -7,6 +7,7 @@ Patrimonio::Patrimonio(int id, std::string marca, std::string modelo, std::strin
     this->modelo = modelo;
     this->descricao = descricao;
     this->dataEntrada = dataEntrada;
+    this->loanedTo = NULL;
 }
 
 
@@ -40,6 +41,11 @@ Date Patrimonio::getDataDeEntrada()
     return this->dataEntrada;
 }
 
+Person *Patrimonio::getLoanedTo()
+{
+    return this->loanedTo;
+}
+
 bool Patrimonio::setId(const int &id)
 {
     if(id < 10e2) return false;
@@ -62,6 +68,18 @@ void Patrimonio::setDataEntrada(const Date &dataEntrada)
 {
     this->dataEntrada = dataEntrada;
 }
+
+void Patrimonio::setLoanedTo(Person *person)
+{
+    if(this->loanedTo != NULL)
+    {
+        std::cout << "O patrimonio está emprestado" << std::endl;
+        return;
+    }
+
+    this->loanedTo = person;
+}
+
 
 bool Patrimonio::operator==(const Patrimonio &patrimonio)
 {

@@ -172,6 +172,82 @@ Patrimonio *MainWindow::recebeInfoPatrimonio()
 
 void MainWindow::on_btnConsultar_clicked()
 {
-//    std::cout << ((Student *)this->listaDeColaboradores[0])->patrimoniosInLoan.size() << std::endl;
-;}
+    std::string RA = this->ui->raCollaboratorsConsulta->text().toStdString();
+    auto colaborador = findPerson(RA, this->listaDeColaboradores);
+    if(colaborador == NULL)
+    {
+        this->ui->raConstultar->setStyleSheet("background-color: rgba(255, 0, 0,255)");
+        return;
+    }
+
+    this->ui->raConstultar->setStyleSheet("background-color: rgba(0, 0, 0,0)");
+
+    std::vector<Patrimonio *> patrimoniosComColaborador;
+
+    if(dynamic_cast<Student *>(colaborador))
+    {
+        patrimoniosComColaborador = ((Student *) colaborador)->getLoanedPatrimonio();
+    }
+    else
+    {
+        patrimoniosComColaborador = ((Employee *) colaborador)->getLoanedPatrimonio();
+    }
+
+    if(patrimoniosComColaborador.size() != 0)
+    {
+        this->showPatrimonioLoaned(patrimoniosComColaborador);
+    }
+
+
+
+    //    std::cout << ((Student *)this->listaDeColaboradores[0])->patrimoniosInLoan.size() << std::endl;
+}
+
+void MainWindow::showPatrimonioLoaned(std::vector<Patrimonio *> patrimonioList)
+{
+    QString mensagem;
+    for(Patrimonio *patrimonio : patrimonioList)
+    {
+        QString infoPatrimonio = "Id: " + QString::number(patrimonio->getId()) + "  |  " + "Marca: " + QString::fromStdString(patrimonio->getMarca())
+                                 + "  |  " + "Modelo: " +QString::fromStdString(patrimonio->getModelo()) + "  |  " + "Descrição: "
+                                 + QString::fromStdString(patrimonio->getDescricao()) + "\n";
+        mensagem.append(infoPatrimonio);
+    }
+
+    // QMessageBox msgBox;
+    // msgBox.setWindowTitle("Patrimonios com Colaborador");
+    // msgBox.setText(mensagem);
+    // msgBox.setIcon(QMessageBox::Information); // Ícone: Information, Warning, Critical, Question
+    // msgBox.setStandardButtons(QMessageBox::Ok);
+    // msgBox.setDefaultButton(QMessageBox::Ok); // Botão padrão
+    // // msgBox.resize(500, 200);
+    // // msgBox.setStyleSheet("QLabel{min-width:500 px; font-size: 24px;} QPushButton{ width:250px; font-size: 18px; }");
+    // // msgBox.setStyleSheet("QLabel{min-width: 700px;}");
+    // int ret = msgBox.exec();
+
+    // if (ret == QMessageBox::Ok) {
+    //     // Usuário clicou em "Ok"
+    // } else if (ret == QMessageBox::Cancel) {
+    //     // Usuário clicou em "Cancel"
+    // }
+
+    // Criando o diálogo
+    QDialog dialog;
+    dialog.setWindowTitle("Patrimonios com Colaborador: " + QString::fromStdString(patrimonioList[0]->getLoanedTo()->getName()));
+    dialog.resize(300, 150);
+
+    // Layout e widgets
+    QVBoxLayout layout(&dialog);
+    QLabel label(mensagem);
+    QPushButton okButton("Ok");
+
+    layout.addWidget(&label);
+    layout.addWidget(&okButton);
+
+    // Conectar botão ao fechamento do diálogo
+    QObject::connect(&okButton, &QPushButton::clicked, &dialog, &QDialog::accept);
+
+    // Mostrar o diálogo
+    dialog.exec();
+}
 
