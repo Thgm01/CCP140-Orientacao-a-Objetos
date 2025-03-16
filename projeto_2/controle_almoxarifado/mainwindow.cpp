@@ -197,10 +197,6 @@ void MainWindow::on_btnConsultar_clicked()
     {
         this->showPatrimonioLoaned(patrimoniosComColaborador);
     }
-
-
-
-    //    std::cout << ((Student *)this->listaDeColaboradores[0])->patrimoniosInLoan.size() << std::endl;
 }
 
 void MainWindow::showPatrimonioLoaned(std::vector<Patrimonio *> patrimonioList)
@@ -214,29 +210,10 @@ void MainWindow::showPatrimonioLoaned(std::vector<Patrimonio *> patrimonioList)
         mensagem.append(infoPatrimonio);
     }
 
-    // QMessageBox msgBox;
-    // msgBox.setWindowTitle("Patrimonios com Colaborador");
-    // msgBox.setText(mensagem);
-    // msgBox.setIcon(QMessageBox::Information); // Ícone: Information, Warning, Critical, Question
-    // msgBox.setStandardButtons(QMessageBox::Ok);
-    // msgBox.setDefaultButton(QMessageBox::Ok); // Botão padrão
-    // // msgBox.resize(500, 200);
-    // // msgBox.setStyleSheet("QLabel{min-width:500 px; font-size: 24px;} QPushButton{ width:250px; font-size: 18px; }");
-    // // msgBox.setStyleSheet("QLabel{min-width: 700px;}");
-    // int ret = msgBox.exec();
-
-    // if (ret == QMessageBox::Ok) {
-    //     // Usuário clicou em "Ok"
-    // } else if (ret == QMessageBox::Cancel) {
-    //     // Usuário clicou em "Cancel"
-    // }
-
-    // Criando o diálogo
     QDialog dialog;
     dialog.setWindowTitle("Patrimonios com Colaborador: " + QString::fromStdString(patrimonioList[0]->getLoanedTo()->getName()));
     dialog.resize(300, 150);
 
-    // Layout e widgets
     QVBoxLayout layout(&dialog);
     QLabel label(mensagem);
     QPushButton okButton("Ok");
@@ -244,10 +221,58 @@ void MainWindow::showPatrimonioLoaned(std::vector<Patrimonio *> patrimonioList)
     layout.addWidget(&label);
     layout.addWidget(&okButton);
 
-    // Conectar botão ao fechamento do diálogo
     QObject::connect(&okButton, &QPushButton::clicked, &dialog, &QDialog::accept);
 
-    // Mostrar o diálogo
     dialog.exec();
 }
+
+
+void MainWindow::on_btnConsultarPatrimonio_clicked()
+{
+    int id = this->ui->idPatrimonioConsulta->text().toInt();
+    Patrimonio *patrimonio = findPatrimonio(id, this->listaDePatrimonio);
+
+    if(patrimonio == NULL)
+    {
+        this->ui->idConstultar->setStyleSheet("background-color: rgba(255, 0, 0,255)");
+        return;
+    }
+
+    this->ui->idConstultar->setStyleSheet("background-color: rgba(0, 0, 0,0)");
+    this->showPersonLoaned(patrimonio->getLoanedTo());
+
+}
+
+void MainWindow::showPersonLoaned(Person *person)
+{
+    QString mensagem;
+
+    if(dynamic_cast<Student *>(person))
+    {
+        Student *student = (Student *) person;
+        mensagem.append("Este Patrimonio está com o estudante " + QString::fromStdString(student->getName()) + "(RA: " + QString::fromStdString(student->getRegistrationNum()) + " )");
+    }
+    if(dynamic_cast<Employee *>(person))
+    {
+        Employee *employee = (Employee *) person;
+        mensagem.append("Este Patrimonio está com o Funcionário " + QString::fromStdString(employee->getName()) + " (NR: " + QString::fromStdString(employee->getRegistrationNum()) + " )");
+    }
+
+    QDialog dialog;
+    dialog.setWindowTitle("Patrimonios com Colaborador");
+    dialog.resize(300, 150);
+
+    QVBoxLayout layout(&dialog);
+    QLabel label(mensagem);
+    QPushButton okButton("Ok");
+
+    layout.addWidget(&label);
+    layout.addWidget(&okButton);
+
+    QObject::connect(&okButton, &QPushButton::clicked, &dialog, &QDialog::accept);
+
+    dialog.exec();
+
+}
+
 

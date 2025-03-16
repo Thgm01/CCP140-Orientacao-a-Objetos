@@ -86,18 +86,18 @@ public:
      */
     Status getStatus();
 
-    //  ____       _   _                
-    // / ___|  ___| |_| |_ ___ _ __ ___ 
-    // \___ \ / _ \ __| __/ _ \ '__/ __|
-    //  ___) |  __/ |_| ||  __/ |  \__ \
-    // |____/ \___|\__|\__\___|_|  |___/
-
     /**
      * @brief Get the Registration Number object
      * 
      * @param registrationNum Student's RA
      */
     void getRegistrationNum(std::string registrationNum);
+
+    //  ____       _   _
+    // / ___|  ___| |_| |_ ___ _ __ ___
+    // \___ \ / _ \ __| __/ _ \ '__/ __|
+    //  ___) |  __/ |_| ||  __/ |  \__ \
+    // |____/ \___|\__|\__\___|_|  |___/
 
     /**
      * @brief Set the Course object

@@ -1,2 +1,5 @@
-s;Thiago Travagini Moura;8;11;2024;N;11999349067;rpj134@gmail.com;111213294;9;11;2024;0;8;0
-e;João da Silva Costa;8;11;2024;N;11986598859;joao.costa@hotmail.com;123456789;9;11;2024;1;0
+s;Thiago Travagini Moura;26;5;2001;N;11999349067;rpj134@gmail.com;111213294;9;11;2024;0;8;0
+e;Leonardo Anjoletto Ferreira;8;11;2024;N;11986598859;joao.costa@hotmail.com;123456789;9;11;2024;1;0
+s;Julia Gagliera Hernandes;17;11;2003;N;11980440148;julia.ghernandes@gmail.com;111210803;22;11;2024;0;8;0
+s;Murilo Paiva;5;1;2003;N;11984920394;murilopp@gmail.com;111213091;22;11;2024;1;8;0
+s;Luis Rotta;15;1;2002;M;1198659898;luis.rotta@hotmail.com;111213429;23;11;2024;0;8;0

@@ -1,2 +1,3 @@
-12334;teste1;teste2;asdfasdf;9;11;2024
-123345;teste3;teste4;asdfasdf;9;11;2024
+12334;STM;STM 32;Microcontrolador;9;11;2024
+12345;Arduino;Uno;kit de desenvolvimento;9;11;2024
+501209;Minipa;FA80;Osciloscopio digital 2 canais com gerador;22;11;2024

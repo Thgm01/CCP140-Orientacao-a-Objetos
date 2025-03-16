@@ -39,6 +39,8 @@ private slots:
 
     void on_btnConsultar_clicked();
 
+    void on_btnConsultarPatrimonio_clicked();
+
 private:
 
     Ui::MainWindow *ui;
@@ -46,6 +48,7 @@ private:
 
     void dataNascimentoConfig();
     void showPatrimonioLoaned(std::vector<Patrimonio *> patrimonioList);
+    void showPersonLoaned(Person *person);
 
     std::string collaboratorsFilePath = "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/collaboratorsData.txt";
     std::string patrimonioFilePath = "/home/thiago/Documents/fei/8_semestre/CCP140-Orientacao-a-Objetos/projeto_2/controle_almoxarifado/patrimoniosData.txt";
